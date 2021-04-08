@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3a3e509d2366c45ae2f124d8a8f953, type: 3}
+  m_Name: Atrist
+  m_EditorClassIdentifier: 
+  Name: 
+  MaxHP: 0
+  m_WeightCategory: 0
+  m_MoveSpeedCategory: 1
+  AttackSpeed: 1
+  MinAttackTime: 2
+  MaxAttackTime: 3
+  ScaredPercentHP: 0

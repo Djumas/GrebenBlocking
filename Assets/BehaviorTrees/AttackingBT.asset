@@ -1,0 +1,792 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: AttackingBT
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"dynamic":true,"_position":{"x":-721.2194,"y":1486.096},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"dynamic":true,"_position":{"x":-1258.013,"y":1549.055},"_comment":"Dynamic
+    for the LOS Check","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_condition":{"valueA":{"_name":"isAttacking","_targetVariableID":"dac7ec9a-49b6-4853-a267-f8a7b4a84f73"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":-1775.124,"y":1712.089},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_condition":{"checkTarget":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"viewAngle":{"_value":180.0},"$type":"NodeCanvas.Tasks.Conditions.IsInFront"},"_position":{"x":-1591.391,"y":1725.06},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"3"},{"_condition":{"checkTarget":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"distance":{"_value":2.0},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"},"_position":{"x":-1312.651,"y":1729.497},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_action":{"actions":[{"layerIndex":{},"stateName":{"_value":"Walk"},"$type":"NodeCanvas.Tasks.Actions.MecanimPlayAnimation"},{"parameter":{"_value":"isWalking"},"parameterHashID":{},"setTo":{"_value":true},"$type":"NodeCanvas.Tasks.Actions.MecanimSetBool"},{"target":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"speed":{"_value":2.0},"keepDistance":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.MoveToGameObject"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":-1066.014,"y":1817.715},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"},{"dynamic":true,"_position":{"x":-191.1097,"y":1637.0},"_comment":"Dynamic
+    for the LOS Check","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"_condition":{"valueA":{"_name":"HP","_targetVariableID":"53bba33e-0b7b-484a-857a-381256ed8ba7"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":-338.9092,"y":1780.096},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"7"},{"_position":{"x":-26.0,"y":1788.0},"_comment":"Move
+    or Aim","$type":"NodeCanvas.BehaviourTrees.Selector","$id":"8"},{"_action":{"boolVariable":{"_name":"isDead","_targetVariableID":"a4521f10-d21d-4bd8-a44a-ee1a38ff6a6d"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},"_position":{"x":-58.0,"y":1871.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"9"},{"dynamic":true,"_position":{"x":324.161,"y":1603.706},"_comment":"Dynamic
+    for the LOS Check","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"10"},{"_condition":{"conditions":[{"checkTarget":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"viewAngle":{"_value":70.0},"$type":"NodeCanvas.Tasks.Conditions.IsInFront"},{"valueA":{"_name":"isAttacking","_targetVariableID":"dac7ec9a-49b6-4853-a267-f8a7b4a84f73"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"}],"$type":"NodeCanvas.Framework.ConditionList"},"_position":{"x":138.0724,"y":1704.923},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"11"},{"_position":{"x":456.7937,"y":1711.319},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"12"},{"_action":{"boolVariable":{"_name":"isAttacking","_targetVariableID":"dac7ec9a-49b6-4853-a267-f8a7b4a84f73"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},"_position":{"x":357.5116,"y":1864.527},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"13"},{"dynamic":true,"_position":{"x":774.2172,"y":1585.566},"_comment":"Dynamic
+    for the LOS Check","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"14"},{"_condition":{"conditions":[{"checkTarget":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"viewAngle":{"_value":70.0},"$type":"NodeCanvas.Tasks.Conditions.IsInFront"},{"valueA":{"_name":"isAttacking","_targetVariableID":"dac7ec9a-49b6-4853-a267-f8a7b4a84f73"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"checkTarget":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"checkType":4,"distance":{"_value":2.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"}],"$type":"NodeCanvas.Framework.ConditionList"},"_position":{"x":589.8416,"y":1665.986},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"15"},{"_position":{"x":918.7412,"y":1698.151},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"16"},{"_action":{"actions":[{"parameter":{"_value":"isWalking"},"parameterHashID":{},"setTo":{},"$type":"NodeCanvas.Tasks.Actions.MecanimSetBool"},{"lookTarget":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"$type":"NodeCanvas.Tasks.Actions.LookAt"},{"minValue":{"_value":1},"maxValue":{"_value":3},"intVariable":{"_name":"AttackType","_targetVariableID":"37d37a5d-f616-4dcd-859f-17bc4d0fc682"},"$type":"NodeCanvas.Tasks.Actions.SetIntRandom"},{"parameter":{"_value":"isAttacking"},"parameterHashID":{},"setTo":{"_value":true},"$type":"NodeCanvas.Tasks.Actions.MecanimSetBool"},{"parameter":{"_value":"HitType"},"parameterHashID":{},"setTo":{"_name":"AttackType","_targetVariableID":"37d37a5d-f616-4dcd-859f-17bc4d0fc682"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},{"waitTime":{"_name":"attackSpeed","_targetVariableID":"9a93151b-8318-406c-b5ea-3402efa6a637"},"$type":"NodeCanvas.Tasks.Actions.Wait"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":724.6785,"y":1813.911},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"17"},{"dynamic":true,"_position":{"x":-725.0,"y":1601.0},"_comment":"Dynamic
+    for the LOS Check","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"18"},{"_condition":{"valueA":{"_name":"HP","_targetVariableID":"53bba33e-0b7b-484a-857a-381256ed8ba7"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":-882.9092,"y":1722.096},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"19"},{"_position":{"x":-593.0,"y":1737.0},"_comment":"Move
+    or Aim","$type":"NodeCanvas.BehaviourTrees.Selector","$id":"20"},{"_action":{"parameter":{"_value":"isDeath"},"parameterHashID":{},"$type":"NodeCanvas.Tasks.Actions.MecanimSetTrigger"},"_position":{"x":-775.9088,"y":1833.038},"_comment":"Aim
+    Target","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"21"},{"dynamic":true,"_position":{"x":-2236.201,"y":1575.413},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"22"},{"_condition":{"checkTarget":{"_name":"EnemyGlobal/Target","_targetVariableID":"60683070-f3c4-43eb-b5d3-dfd45a7c4623"},"checkType":1,"distance":{"_value":10.0,"_name":"EnemyGlobal/exitDistance","_targetVariableID":"4137aa9d-8c72-4bfc-9ee2-afa407ed8647"},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"},"_position":{"x":-2528.466,"y":1814.607},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"23"},{"_position":{"x":-2063.677,"y":1787.831},"$type":"NodeCanvas.BehaviourTrees.FlipSelector","$id":"24"},{"_action":{"actions":[{"boolVariable":{"_name":"isAttacking","_targetVariableID":"dac7ec9a-49b6-4853-a267-f8a7b4a84f73"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"isPatroling","_targetVariableID":"697c6989-74b6-4de2-822b-afb0e03a2e84"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":-2248.528,"y":1971.709},"_comment":"Aim
+    Target","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"25"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"10"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"14"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"9"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"11"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"13"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"16"},"_targetNode":{"$ref":"17"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"19"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"22"},"_targetNode":{"$ref":"23"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"22"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"24"},"_targetNode":{"$ref":"25"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"AttackType":{"_name":"AttackType","_id":"37d37a5d-f616-4dcd-859f-17bc4d0fc682","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minAttackTime":{"_propertyPath":"EnemyCore.minAttackTime","_name":"minAttackTime","_id":"944ee220-924c-4639-9f60-9cb9bc6490fc","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxAttackTime":{"_propertyPath":"EnemyCore.maxAttackTime","_name":"maxAttackTime","_id":"5ad1eb91-6a57-4e65-aa5e-c14797a8a8fb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"attackSpeed":{"_value":3.0,"_name":"attackSpeed","_id":"9a93151b-8318-406c-b5ea-3402efa6a637","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"HP":{"_propertyPath":"Health.hp","_name":"HP","_id":"53bba33e-0b7b-484a-857a-381256ed8ba7","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences: []
+  _graphSource:
+    _version: 3.03
+    _category: 
+    _comments: 
+    _translation: {x: 389, y: -1232}
+    _zoomFactor: 1
+  _haltSerialization: 0
+#---GRAPH_START---
+#The pretty formatted json serialization bellow is only a reference to help in version control diff. Other than that it is not used at all.
+#{
+#    "type": "NodeCanvas.BehaviourTrees.BehaviourTree",
+#    "nodes": [
+#        {
+#            "dynamic": true,
+#            "_position": {
+#                "x": -721.2194,
+#                "y": 1486.096
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.Selector",
+#            "$id": "0"
+#        },
+#        {
+#            "dynamic": true,
+#            "_position": {
+#                "x": -1258.013,
+#                "y": 1549.055
+#            },
+#            "_comment": "Dynamic for the LOS Check",
+#            "$type": "NodeCanvas.BehaviourTrees.Sequencer",
+#            "$id": "1"
+#        },
+#        {
+#            "_condition": {
+#                "valueA": {
+#                    "_name": "isAttacking",
+#                    "_targetVariableID": "dac7ec9a-49b6-4853-a267-f8a7b4a84f73"
+#                },
+#                "valueB": {
+#                    "_value": true
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+#            },
+#            "_position": {
+#                "x": -1775.124,
+#                "y": 1712.089
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "2"
+#        },
+#        {
+#            "_condition": {
+#                "checkTarget": {
+#                    "_name": "EnemyGlobal/Target",
+#                    "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                },
+#                "viewAngle": {
+#                    "_value": 180.0
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.IsInFront"
+#            },
+#            "_position": {
+#                "x": -1591.391,
+#                "y": 1725.06
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "3"
+#        },
+#        {
+#            "_condition": {
+#                "checkTarget": {
+#                    "_name": "EnemyGlobal/Target",
+#                    "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                },
+#                "distance": {
+#                    "_value": 2.0
+#                },
+#                "_invert": true,
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"
+#            },
+#            "_position": {
+#                "x": -1312.651,
+#                "y": 1729.497
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "4"
+#        },
+#        {
+#            "_action": {
+#                "actions": [
+#                    {
+#                        "layerIndex": {
+#
+#                        },
+#                        "stateName": {
+#                            "_value": "Walk"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.MecanimPlayAnimation"
+#                    },
+#                    {
+#                        "parameter": {
+#                            "_value": "isWalking"
+#                        },
+#                        "parameterHashID": {
+#
+#                        },
+#                        "setTo": {
+#                            "_value": true
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.MecanimSetBool"
+#                    },
+#                    {
+#                        "target": {
+#                            "_name": "EnemyGlobal/Target",
+#                            "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                        },
+#                        "speed": {
+#                            "_value": 2.0
+#                        },
+#                        "keepDistance": {
+#                            "_value": 0.1
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.MoveToGameObject"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ActionList"
+#            },
+#            "_position": {
+#                "x": -1066.014,
+#                "y": 1817.715
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ActionNode",
+#            "$id": "5"
+#        },
+#        {
+#            "dynamic": true,
+#            "_position": {
+#                "x": -191.1097,
+#                "y": 1637.0
+#            },
+#            "_comment": "Dynamic for the LOS Check",
+#            "$type": "NodeCanvas.BehaviourTrees.Sequencer",
+#            "$id": "6"
+#        },
+#        {
+#            "_condition": {
+#                "valueA": {
+#                    "_name": "HP",
+#                    "_targetVariableID": "53bba33e-0b7b-484a-857a-381256ed8ba7"
+#                },
+#                "valueB": {
+#
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckInt"
+#            },
+#            "_position": {
+#                "x": -338.9092,
+#                "y": 1780.096
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "7"
+#        },
+#        {
+#            "_position": {
+#                "x": -26.0,
+#                "y": 1788.0
+#            },
+#            "_comment": "Move or Aim",
+#            "$type": "NodeCanvas.BehaviourTrees.Selector",
+#            "$id": "8"
+#        },
+#        {
+#            "_action": {
+#                "boolVariable": {
+#                    "_name": "isDead",
+#                    "_targetVariableID": "a4521f10-d21d-4bd8-a44a-ee1a38ff6a6d"
+#                },
+#                "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#            },
+#            "_position": {
+#                "x": -58.0,
+#                "y": 1871.0
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ActionNode",
+#            "$id": "9"
+#        },
+#        {
+#            "dynamic": true,
+#            "_position": {
+#                "x": 324.161,
+#                "y": 1603.706
+#            },
+#            "_comment": "Dynamic for the LOS Check",
+#            "$type": "NodeCanvas.BehaviourTrees.Sequencer",
+#            "$id": "10"
+#        },
+#        {
+#            "_condition": {
+#                "conditions": [
+#                    {
+#                        "checkTarget": {
+#                            "_name": "EnemyGlobal/Target",
+#                            "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                        },
+#                        "viewAngle": {
+#                            "_value": 70.0
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.IsInFront"
+#                    },
+#                    {
+#                        "valueA": {
+#                            "_name": "isAttacking",
+#                            "_targetVariableID": "dac7ec9a-49b6-4853-a267-f8a7b4a84f73"
+#                        },
+#                        "valueB": {
+#
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ConditionList"
+#            },
+#            "_position": {
+#                "x": 138.0724,
+#                "y": 1704.923
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "11"
+#        },
+#        {
+#            "_position": {
+#                "x": 456.7937,
+#                "y": 1711.319
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.Selector",
+#            "$id": "12"
+#        },
+#        {
+#            "_action": {
+#                "boolVariable": {
+#                    "_name": "isAttacking",
+#                    "_targetVariableID": "dac7ec9a-49b6-4853-a267-f8a7b4a84f73"
+#                },
+#                "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#            },
+#            "_position": {
+#                "x": 357.5116,
+#                "y": 1864.527
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ActionNode",
+#            "$id": "13"
+#        },
+#        {
+#            "dynamic": true,
+#            "_position": {
+#                "x": 774.2172,
+#                "y": 1585.566
+#            },
+#            "_comment": "Dynamic for the LOS Check",
+#            "$type": "NodeCanvas.BehaviourTrees.Sequencer",
+#            "$id": "14"
+#        },
+#        {
+#            "_condition": {
+#                "conditions": [
+#                    {
+#                        "checkTarget": {
+#                            "_name": "EnemyGlobal/Target",
+#                            "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                        },
+#                        "viewAngle": {
+#                            "_value": 70.0
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.IsInFront"
+#                    },
+#                    {
+#                        "valueA": {
+#                            "_name": "isAttacking",
+#                            "_targetVariableID": "dac7ec9a-49b6-4853-a267-f8a7b4a84f73"
+#                        },
+#                        "valueB": {
+#                            "_value": true
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+#                    },
+#                    {
+#                        "checkTarget": {
+#                            "_name": "EnemyGlobal/Target",
+#                            "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                        },
+#                        "checkType": 4,
+#                        "distance": {
+#                            "_value": 2.0
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ConditionList"
+#            },
+#            "_position": {
+#                "x": 589.8416,
+#                "y": 1665.986
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "15"
+#        },
+#        {
+#            "_position": {
+#                "x": 918.7412,
+#                "y": 1698.151
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.Selector",
+#            "$id": "16"
+#        },
+#        {
+#            "_action": {
+#                "actions": [
+#                    {
+#                        "parameter": {
+#                            "_value": "isWalking"
+#                        },
+#                        "parameterHashID": {
+#
+#                        },
+#                        "setTo": {
+#
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.MecanimSetBool"
+#                    },
+#                    {
+#                        "lookTarget": {
+#                            "_name": "EnemyGlobal/Target",
+#                            "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.LookAt"
+#                    },
+#                    {
+#                        "minValue": {
+#                            "_value": 1
+#                        },
+#                        "maxValue": {
+#                            "_value": 3
+#                        },
+#                        "intVariable": {
+#                            "_name": "AttackType",
+#                            "_targetVariableID": "37d37a5d-f616-4dcd-859f-17bc4d0fc682"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.SetIntRandom"
+#                    },
+#                    {
+#                        "parameter": {
+#                            "_value": "isAttacking"
+#                        },
+#                        "parameterHashID": {
+#
+#                        },
+#                        "setTo": {
+#                            "_value": true
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.MecanimSetBool"
+#                    },
+#                    {
+#                        "parameter": {
+#                            "_value": "HitType"
+#                        },
+#                        "parameterHashID": {
+#
+#                        },
+#                        "setTo": {
+#                            "_name": "AttackType",
+#                            "_targetVariableID": "37d37a5d-f616-4dcd-859f-17bc4d0fc682"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.MecanimSetInt"
+#                    },
+#                    {
+#                        "waitTime": {
+#                            "_name": "attackSpeed",
+#                            "_targetVariableID": "9a93151b-8318-406c-b5ea-3402efa6a637"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.Wait"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ActionList"
+#            },
+#            "_position": {
+#                "x": 724.6785,
+#                "y": 1813.911
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ActionNode",
+#            "$id": "17"
+#        },
+#        {
+#            "dynamic": true,
+#            "_position": {
+#                "x": -725.0,
+#                "y": 1601.0
+#            },
+#            "_comment": "Dynamic for the LOS Check",
+#            "$type": "NodeCanvas.BehaviourTrees.Sequencer",
+#            "$id": "18"
+#        },
+#        {
+#            "_condition": {
+#                "valueA": {
+#                    "_name": "HP",
+#                    "_targetVariableID": "53bba33e-0b7b-484a-857a-381256ed8ba7"
+#                },
+#                "valueB": {
+#
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckInt"
+#            },
+#            "_position": {
+#                "x": -882.9092,
+#                "y": 1722.096
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "19"
+#        },
+#        {
+#            "_position": {
+#                "x": -593.0,
+#                "y": 1737.0
+#            },
+#            "_comment": "Move or Aim",
+#            "$type": "NodeCanvas.BehaviourTrees.Selector",
+#            "$id": "20"
+#        },
+#        {
+#            "_action": {
+#                "parameter": {
+#                    "_value": "isDeath"
+#                },
+#                "parameterHashID": {
+#
+#                },
+#                "$type": "NodeCanvas.Tasks.Actions.MecanimSetTrigger"
+#            },
+#            "_position": {
+#                "x": -775.9088,
+#                "y": 1833.038
+#            },
+#            "_comment": "Aim Target",
+#            "$type": "NodeCanvas.BehaviourTrees.ActionNode",
+#            "$id": "21"
+#        },
+#        {
+#            "dynamic": true,
+#            "_position": {
+#                "x": -2236.201,
+#                "y": 1575.413
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.Sequencer",
+#            "$id": "22"
+#        },
+#        {
+#            "_condition": {
+#                "checkTarget": {
+#                    "_name": "EnemyGlobal/Target",
+#                    "_targetVariableID": "60683070-f3c4-43eb-b5d3-dfd45a7c4623"
+#                },
+#                "checkType": 1,
+#                "distance": {
+#                    "_value": 10.0,
+#                    "_name": "EnemyGlobal/exitDistance",
+#                    "_targetVariableID": "4137aa9d-8c72-4bfc-9ee2-afa407ed8647"
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"
+#            },
+#            "_position": {
+#                "x": -2528.466,
+#                "y": 1814.607
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.ConditionNode",
+#            "$id": "23"
+#        },
+#        {
+#            "_position": {
+#                "x": -2063.677,
+#                "y": 1787.831
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.FlipSelector",
+#            "$id": "24"
+#        },
+#        {
+#            "_action": {
+#                "actions": [
+#                    {
+#                        "boolVariable": {
+#                            "_name": "isAttacking",
+#                            "_targetVariableID": "dac7ec9a-49b6-4853-a267-f8a7b4a84f73"
+#                        },
+#                        "setTo": 0,
+#                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#                    },
+#                    {
+#                        "boolVariable": {
+#                            "_name": "isPatroling",
+#                            "_targetVariableID": "697c6989-74b6-4de2-822b-afb0e03a2e84"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ActionList"
+#            },
+#            "_position": {
+#                "x": -2248.528,
+#                "y": 1971.709
+#            },
+#            "_comment": "Aim Target",
+#            "$type": "NodeCanvas.BehaviourTrees.ActionNode",
+#            "$id": "25"
+#        }
+#    ],
+#    "connections": [
+#        {
+#            "_sourceNode": {
+#                "$ref": "0"
+#            },
+#            "_targetNode": {
+#                "$ref": "1"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "0"
+#            },
+#            "_targetNode": {
+#                "$ref": "6"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "0"
+#            },
+#            "_targetNode": {
+#                "$ref": "10"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "0"
+#            },
+#            "_targetNode": {
+#                "$ref": "14"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "2"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "3"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "4"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "5"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "6"
+#            },
+#            "_targetNode": {
+#                "$ref": "7"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "6"
+#            },
+#            "_targetNode": {
+#                "$ref": "8"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "8"
+#            },
+#            "_targetNode": {
+#                "$ref": "9"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "10"
+#            },
+#            "_targetNode": {
+#                "$ref": "11"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "10"
+#            },
+#            "_targetNode": {
+#                "$ref": "12"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "12"
+#            },
+#            "_targetNode": {
+#                "$ref": "13"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "14"
+#            },
+#            "_targetNode": {
+#                "$ref": "15"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "14"
+#            },
+#            "_targetNode": {
+#                "$ref": "16"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "16"
+#            },
+#            "_targetNode": {
+#                "$ref": "17"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "18"
+#            },
+#            "_targetNode": {
+#                "$ref": "19"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "18"
+#            },
+#            "_targetNode": {
+#                "$ref": "20"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "20"
+#            },
+#            "_targetNode": {
+#                "$ref": "21"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "22"
+#            },
+#            "_targetNode": {
+#                "$ref": "23"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "22"
+#            },
+#            "_targetNode": {
+#                "$ref": "24"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "24"
+#            },
+#            "_targetNode": {
+#                "$ref": "25"
+#            },
+#            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+#        }
+#    ],
+#    "canvasGroups": [],
+#    "localBlackboard": {
+#        "_variables": {
+#            "AttackType": {
+#                "_name": "AttackType",
+#                "_id": "37d37a5d-f616-4dcd-859f-17bc4d0fc682",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "minAttackTime": {
+#                "_propertyPath": "EnemyCore.minAttackTime",
+#                "_name": "minAttackTime",
+#                "_id": "944ee220-924c-4639-9f60-9cb9bc6490fc",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "maxAttackTime": {
+#                "_propertyPath": "EnemyCore.maxAttackTime",
+#                "_name": "maxAttackTime",
+#                "_id": "5ad1eb91-6a57-4e65-aa5e-c14797a8a8fb",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "attackSpeed": {
+#                "_value": 3.0,
+#                "_name": "attackSpeed",
+#                "_id": "9a93151b-8318-406c-b5ea-3402efa6a637",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "HP": {
+#                "_propertyPath": "Health.hp",
+#                "_name": "HP",
+#                "_id": "53bba33e-0b7b-484a-857a-381256ed8ba7",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            }
+#        }
+#    },
+#    "derivedData": {
+#        "repeat": true,
+#        "$type": "NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"
+#    }
+#}
+#---GRAPH_END---
