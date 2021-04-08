@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 
 
-
 public class PlayerCore : MonoBehaviour
 {
     [SerializeField]
     public PlayerSettings defaultSettings;
 
-    public GameObject attackPoint;
+    public GameObject attackPointLeft;
+    public GameObject attackPointRight;
+
 
     public LayerMask enemyLayerMask;
 
@@ -17,6 +18,8 @@ public class PlayerCore : MonoBehaviour
     private Animator animator;
 
     public bool drawCircleGizmo = false;
+    private bool drawLeftGizmo = false;
+    private bool drawRightGizmo = false;
     public float circleGizmoRadius = 2.0f;
 
     public void Update()
@@ -30,12 +33,27 @@ public class PlayerCore : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Attack(float attackRange, float attackDamage)
+    public void Attack(float attackRange, float attackDamage, AttackListener.AttackPoints attackPoint, int attackId)
     {
-        hitEnemies = Physics.OverlapSphere(transform.position, attackRange, enemyLayerMask);
+        drawCircleGizmo = true;
+        drawLeftGizmo = false;
+        drawRightGizmo = false;
+        circleGizmoRadius = attackRange;
+        switch (attackPoint) {
+            case AttackListener.AttackPoints.Left:
+                hitEnemies = Physics.OverlapSphere(attackPointLeft.transform.position, attackRange, enemyLayerMask);
+                drawLeftGizmo = true;
+                break;
+            case AttackListener.AttackPoints.Right:
+                hitEnemies = Physics.OverlapSphere(attackPointRight.transform.position, attackRange, enemyLayerMask);
+                drawRightGizmo = true;
+                break;
+        }
+
+
 
         foreach (Collider enemy in hitEnemies)
-            enemy.GetComponent<Health>().TakeDamage(attackDamage);
+            enemy.GetComponent<Health>().TakeDamage(attackDamage, attackId);
     }
 
     private void InputHandler() {
@@ -59,10 +77,16 @@ public class PlayerCore : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         if (drawCircleGizmo) {
-            Gizmos.DrawSphere(transform.position, circleGizmoRadius);
+            if (drawLeftGizmo)
+            {
+                Gizmos.DrawWireSphere(attackPointLeft.transform.position, circleGizmoRadius);
+            }
+            if (drawRightGizmo)
+            {
+                Gizmos.DrawWireSphere(attackPointRight.transform.position, circleGizmoRadius);
+            }
         }
     }
 

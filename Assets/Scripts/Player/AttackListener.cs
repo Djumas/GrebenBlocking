@@ -9,23 +9,29 @@ public class AttackListener : StateMachineBehaviour
     public float attackCheckEnd;
     public float attackRange;
     public float attackDamage;
+    public enum AttackPoints { Left, Right }
+    public AttackPoints attackPoint;
+    private int attackId;
+
+
      //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerCore = animator.gameObject.GetComponent<PlayerCore>();
-
+        attackId = Random.Range(0, 1000000);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        playerCore.drawCircleGizmo = false;
+
         if (stateInfo.normalizedTime > attackCheckStart && stateInfo.normalizedTime < attackCheckEnd)
         {
-            playerCore.Attack(attackRange,attackDamage);
+            playerCore.Attack(attackRange, attackDamage, attackPoint, attackId);
         }
 
-
-
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -878,7 +878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205711269}
   m_LocalRotation: {x: -0, y: 0.9961947, z: -0.08715578, w: 0}
-  m_LocalPosition: {x: -3.2392898, y: 1.4689077, z: 21.186962}
+  m_LocalPosition: {x: -3.249687, y: 1.4689077, z: 21.186962}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399552580}
@@ -1077,7 +1077,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243261539}
   m_LocalRotation: {x: 0, y: 0.9961947, z: -0.08715578, w: 0}
-  m_LocalPosition: {x: -1.6526258, y: 2.2439888, z: 5.66063}
+  m_LocalPosition: {x: -1.6630231, y: 2.2439888, z: 5.66063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1772,6 +1772,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8713783763369234863, guid: 43079b0cf61224040953bfb61568fb66, type: 3}
+--- !u!1 &405275681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6184854069674553946, guid: 13385366cbc3dd84485cf217aed053b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7584317062108797088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410584688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4822551098448333552, guid: 43079b0cf61224040953bfb61568fb66,
@@ -5262,6 +5268,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -98398127523712572, guid: 43079b0cf61224040953bfb61568fb66, type: 3}
+--- !u!1 &1522084178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336796578233396252, guid: 13385366cbc3dd84485cf217aed053b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7584317062108797088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1548472697 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2342900172291361584, guid: 43079b0cf61224040953bfb61568fb66,
@@ -10643,6 +10655,16 @@ PrefabInstance:
       propertyPath: enemyLayerMask.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 7584317061456712249, guid: 13385366cbc3dd84485cf217aed053b0,
+        type: 3}
+      propertyPath: attackPointLeft
+      value: 
+      objectReference: {fileID: 1522084178}
+    - target: {fileID: 7584317061456712249, guid: 13385366cbc3dd84485cf217aed053b0,
+        type: 3}
+      propertyPath: attackPointRight
+      value: 
+      objectReference: {fileID: 405275681}
     - target: {fileID: 7584317061456712250, guid: 13385366cbc3dd84485cf217aed053b0,
         type: 3}
       propertyPath: m_Height

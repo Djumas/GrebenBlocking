@@ -65,7 +65,7 @@ public class FocusHandler : MonoBehaviour
     {
         nearestEnemy = FindNearestEnemy();
         //transform.LookAt(nearestEnemy);
-        rotQuat.SetLookRotation((nearestEnemy.position - transform.position).normalized);
+        rotQuat.SetLookRotation((nearestEnemy.position - new Vector3(0,nearestEnemy.position.y)  - transform.position + new Vector3(0, transform.position.y)).normalized);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotQuat, Time.deltaTime * rotSpeed);
         pointer.transform.position = nearestEnemy.position + new Vector3(0, 2.5f, 0);
         pointer.transform.LookAt(currentCamera.transform);

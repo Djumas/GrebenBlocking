@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 public class Health : MonoBehaviour
 {
     public float hp;
+    private List<int> takenAttacks = new List<int>();
 
     private Animator anim;
 
@@ -15,11 +15,19 @@ public class Health : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, int attackId)
     {
-        hp -= damage;
-        anim.SetTrigger("isDamageHead");
-        Debug.Log(hp);
+
+        if (!takenAttacks.Contains(attackId))
+        {
+            hp -= damage;
+            anim.SetTrigger("isDamageHead");
+            Debug.Log(hp);
+            takenAttacks.Add(attackId);
+        }
+        else {
+            Debug.Log("already attacked");
+        }
     }
 
     public void ResetTrigger()

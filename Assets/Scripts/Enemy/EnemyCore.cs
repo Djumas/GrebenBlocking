@@ -20,7 +20,7 @@ public class EnemyCore : MonoBehaviour
 
     public float attackRange;
     public int attackDamage;
-    public GameObject attackPoint;
+    public GameObject attackPointLeft;
 
     public LayerMask enemyLayerMask;
 
@@ -43,17 +43,17 @@ public class EnemyCore : MonoBehaviour
     {
     }
 
-    private void Attack()
+    private void Attack(float attackRange, float attackDamage, AttackListener.AttackPoints attackPoint, int attackId)
     {
-        hitEnemies = Physics.OverlapSphere(attackPoint.transform.position, attackRange, enemyLayerMask);
+        hitEnemies = Physics.OverlapSphere(attackPointLeft.transform.position, attackRange, enemyLayerMask);
 
         foreach (Collider enemy in hitEnemies)
-            enemy.GetComponent<Health>().TakeDamage(attackDamage);
+            enemy.GetComponent<Health>().TakeDamage(attackDamage, attackId);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
+        Gizmos.DrawWireSphere(attackPointLeft.transform.position, attackRange);
     }
 }
 
