@@ -18,9 +18,9 @@ public class EnemyCore : MonoBehaviour
     [SerializeField]
     public float maxAttackTime;
 
-    public float attackRange;
     public int attackDamage;
     public GameObject attackPointLeft;
+    public GameObject attackPointRight;
 
     public LayerMask enemyLayerMask;
 
@@ -43,7 +43,7 @@ public class EnemyCore : MonoBehaviour
     {
     }
 
-    private void Attack(float attackRange, float attackDamage, AttackListener.AttackPoints attackPoint, int attackId)
+    public void Attack(float attackRange, float attackDamage, AttackListener.AttackPoints attackPoint, int attackId)
     {
         hitEnemies = Physics.OverlapSphere(attackPointLeft.transform.position, attackRange, enemyLayerMask);
 
@@ -53,7 +53,8 @@ public class EnemyCore : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackPointLeft.transform.position, attackRange);
+        Gizmos.DrawWireSphere(attackPointLeft.transform.position, 0.5f);
+        Gizmos.DrawWireSphere(attackPointRight.transform.position, 0.5f);
     }
 }
 

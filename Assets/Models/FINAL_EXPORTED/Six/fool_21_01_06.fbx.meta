@@ -421,41 +421,42 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.5045249
-        functionName: Attack
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 6c8d331bf10f6a34aa897d65e28fe12e,
-          type: 3}
-        floatParameter: 0
-        intParameter: 10
-        messageOptions: 0
-      - time: 1
-        functionName: EndHit
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 260fad4c9d9bfc94b9d7fa7ab9bc64ec,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: ResetTrigger1
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 260fad4c9d9bfc94b9d7fa7ab9bc64ec,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      curves:
+      - name: GravityWeight
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

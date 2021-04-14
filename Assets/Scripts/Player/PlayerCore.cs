@@ -90,6 +90,12 @@ public class PlayerCore : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPointLeft.transform.position, 0.5f);
+        Gizmos.DrawWireSphere(attackPointRight.transform.position, 0.5f);
+    }
+
 
 }
 
