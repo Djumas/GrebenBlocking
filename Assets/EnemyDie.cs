@@ -11,6 +11,8 @@ public class EnemyDie : StateMachineBehaviour
         animator.gameObject.GetComponent<EnemyAI>().Die();
         animator.gameObject.layer = 10;
         animator.gameObject.tag = "Dead";
+        /*animator.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+        animator.gameObject.GetComponent<Rigidbody>().isKinematic = true;*/
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
