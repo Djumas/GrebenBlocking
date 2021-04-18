@@ -15,8 +15,7 @@ public class FocusHandler : MonoBehaviour
     public float rotSpeed = 5;
     private Quaternion rotQuat;
 
-    public CinemachineClearShot clearShot;
-    private CinemachineVirtualCamera currentCamera;
+    public Camera mainCamera;
 
     [HideInInspector]
     public Transform nearestEnemy;
@@ -29,51 +28,54 @@ public class FocusHandler : MonoBehaviour
 
     private void Awake()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         pointer.GetComponent<Renderer>().enabled = false;
-        currentCamera = (CinemachineVirtualCamera)clearShot.LiveChild;
     }
 
     private void Update()
     {
         if (Input.GetButtonDown("Focus"))
         {
-            Debug.Log("Focus pressed");
-            FindEnemies();
-            if (enemiesInFocusRange.Count > 0)
-            {
-                PlayerMovement.inFocus = !PlayerMovement.inFocus;
-                pointer.GetComponent<Renderer>().enabled = PlayerMovement.inFocus;
-
-            }
-            else
-            {
-                Debug.Log("No enemies in range");
-                PlayerMovement.inFocus = false;
-                pointer.GetComponent<Renderer>().enabled = false;
-            }
-            
+            InitFocus();            
         }
 
         if (PlayerMovement.inFocus) {
-            Focus();
+           if(CheckEnemyStatus()){
+                PerformFocus();
+            }
         }
 
     }
 
-    public void Focus()
+    public void InitFocus() {
+        Debug.Log("Focus pressed");
+        FindEnemies();
+        if (enemiesInFocusRange.Count > 0)
+        {
+            PlayerMovement.inFocus = !PlayerMovement.inFocus;
+            pointer.GetComponent<Renderer>().enabled = PlayerMovement.inFocus;
+
+        }
+        else
+        {
+            Debug.Log("No enemies in range");
+            PlayerMovement.inFocus = false;
+            pointer.GetComponent<Renderer>().enabled = false;
+        }
+    }
+
+    public void PerformFocus()
     {
-        nearestEnemy = FindNearestEnemy();
-        //transform.LookAt(nearestEnemy);
         rotQuat.SetLookRotation((nearestEnemy.position - new Vector3(0,nearestEnemy.position.y)  - transform.position + new Vector3(0, transform.position.y)).normalized);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotQuat, Time.deltaTime * rotSpeed);
         pointer.transform.position = nearestEnemy.position + new Vector3(0, 2.5f, 0);
-        pointer.transform.LookAt(currentCamera.transform);
+        pointer.transform.LookAt(mainCamera.transform);
+        pointer.transform.Rotate(0, 180, 0);
     }
 
 
     public void FindEnemies()
     {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemiesInFocusRange.Clear();
         foreach (GameObject enemy in enemies)
         {
@@ -84,6 +86,17 @@ public class FocusHandler : MonoBehaviour
 
             if (distanceToEnemy < focusDistance && angleToEnemy >= -90 && angleToEnemy <= 90)
                 enemiesInFocusRange.Add(enemy.transform);
+        }
+        nearestEnemy = FindNearestEnemy();
+    }
+
+    public bool CheckEnemyStatus() {
+        if (nearestEnemy.tag != "Enemy") {
+            Debug.Log("Enemy in focus doesn't exist");
+            InitFocus();
+            return false;
+        } else {
+            return true;
         }
     }
 

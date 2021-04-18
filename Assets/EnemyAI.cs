@@ -48,6 +48,11 @@ public class EnemyAI : MonoBehaviour
         DefineEnemy();
     }
 
+    public void Die() {
+        navMeshAgent.enabled = false;
+        Debug.Log("AI Dead");
+    }
+
     // Update is called once per frame
     void Update()
     {

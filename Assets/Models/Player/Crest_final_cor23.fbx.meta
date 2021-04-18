@@ -1750,15 +1750,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 1
-        functionName: ResetTrigger1
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 260fad4c9d9bfc94b9d7fa7ab9bc64ec,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

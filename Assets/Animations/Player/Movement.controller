@@ -219,7 +219,7 @@ MonoBehaviour:
   attackCheckStart: 0.8
   attackCheckEnd: 1
   attackRange: 0.5
-  attackDamage: 5
+  attackDamage: 25
   attackPoint: 0
 --- !u!1102 &-7520324319571438384
 AnimatorState:
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   attackCheckStart: 0.5
   attackCheckEnd: 1
   attackRange: 0.6
-  attackDamage: 20
+  attackDamage: 50
   attackPoint: 0
 --- !u!1101 &985007049161749283
 AnimatorStateTransition:
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   attackCheckStart: 0.8
   attackCheckEnd: 1
   attackRange: 0.5
-  attackDamage: 5
+  attackDamage: 20
   attackPoint: 1
 --- !u!1102 &2786648164060630721
 AnimatorState:
