@@ -36,7 +36,7 @@ public class SetFollowTarget : MonoBehaviour
 
     void Update()
     {
-        if (clearShot.LiveChild == nextCamera)
+        if (clearShot.LiveChild as Object == nextCamera)
         {
             index++;
             currentCamera.Follow = null;
@@ -47,7 +47,7 @@ public class SetFollowTarget : MonoBehaviour
             currentCamera.Follow = camerCollider.transform;
         }
 
-        if (clearShot.LiveChild == previousCamera)
+        if (clearShot.LiveChild as Object == previousCamera)
         {
             index--;
             currentCamera.Follow = null;

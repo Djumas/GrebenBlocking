@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        currentCamera = (CinemachineVirtualCamera)clearShot.LiveChild;
+       currentCamera = (CinemachineVirtualCamera)clearShot.LiveChild;
         anim = GetComponent<Animator>();
     }
 
@@ -31,26 +32,38 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Move();
+        
     }
+
 
     public void Move()
     {
         currentCamera = (CinemachineVirtualCamera)clearShot.LiveChild;
 
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        var gamepad = Gamepad.current;
+        
+        float h = gamepad.leftStick.x.ReadValue();
+        float v = gamepad.leftStick.y.ReadValue();
 
-        hsmt = Mathf.Lerp(hsmt, h, Time.deltaTime * smoothing);
-        vsmt = Mathf.Lerp(vsmt, v, Time.deltaTime * smoothing);
+        if (gamepad.rightShoulder.isPressed)
+        {
+            anim.SetBool("inRunMode", true);
+        }
+        else {
+            anim.SetBool("inRunMode", false);
+        }
 
-        bool isWalking = (Mathf.Abs(hsmt) >= 0.1 || Mathf.Abs(vsmt) >= 0.1);
+        
+        bool isWalking = (Mathf.Abs(h) >= 0.3 || Mathf.Abs(v) >= 0.3);
         anim.SetBool("isMoving", isWalking);
+
+
 
         if (isWalking)
         {
-            direction = hsmt * currentCamera.transform.right + vsmt * (currentCamera.transform.forward-(currentCamera.transform.forward.y)*(new Vector3(0,1,0)));
+            direction = h * currentCamera.transform.right + v * (currentCamera.transform.forward-(currentCamera.transform.forward.y)*(new Vector3(0,1,0)));
             Rotate();
-            SetMoveAnim();
+            //SetMoveAnim();
         }
     }
 
