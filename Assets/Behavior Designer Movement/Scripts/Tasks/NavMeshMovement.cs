@@ -61,6 +61,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             navMeshAgent.updateUpAxis = update;
         }
 
+         
         /// <summary>
         /// Does the agent have a pathfinding path?
         /// </summary>
