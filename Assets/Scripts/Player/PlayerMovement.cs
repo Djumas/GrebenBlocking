@@ -10,9 +10,6 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public static bool inFocus = false;
-
-    private float hsmt = 0f;
-    private float vsmt = 0f;
     private Animator anim;
     private Vector3 direction = new Vector3(0, 0, 0);
     private Quaternion rotQuat;
