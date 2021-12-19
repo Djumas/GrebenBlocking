@@ -31,6 +31,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         [Tooltip("The object variable that will be set when a object is found what the object is")]
         public SharedGameObject returnedObject;
 
+        public Color gizmoColor = Color.yellow;
+
         private List<GameObject> objects;
         // distance * distance, optimization so we don't have to take the square root
         private float sqrMagnitude;
@@ -129,7 +131,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 return;
             }
             var oldColor = UnityEditor.Handles.color;
-            UnityEditor.Handles.color = Color.yellow;
+            UnityEditor.Handles.color = gizmoColor;
             UnityEditor.Handles.DrawWireDisc(Owner.transform.position, usePhysics2D ? Owner.transform.forward : Owner.transform.up, magnitude.Value);
             UnityEditor.Handles.color = oldColor;
 #endif

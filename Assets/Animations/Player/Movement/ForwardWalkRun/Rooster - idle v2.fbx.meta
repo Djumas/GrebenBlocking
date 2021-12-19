@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: bdc16c11e731fe049ae3e602ba8e2004
+guid: 9a3877227e45bce4b8250d9f80ec6d98
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Idle
+    second: Rooster_Idle v2
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -17,7 +17,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: model:joints/model:root
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Rooster_Idle v2
       takeName: Take 001
       internalID: 0
       firstFrame: 0

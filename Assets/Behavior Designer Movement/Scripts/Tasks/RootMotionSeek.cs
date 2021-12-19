@@ -13,7 +13,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         [Tooltip("If target is null then use the target position")]
         public SharedVector3 targetPosition;
         public NavMeshAgent navAgent;
-        public float stoppingDistance;
+        public SharedFloat stoppingDistance;
+        public Color gizmoColor = Color.yellow;
 
 
         public override void OnStart()
@@ -33,7 +34,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             // Debug.Log(target.Value.transform.position);
             //Debug.Log("Remaining:"+RemainingDistance());
             //Debug.Log("RemainingDistance" + navAgent.remainingDistance);
-            if (RemainingDistance() < stoppingDistance) {
+            if (RemainingDistance() < stoppingDistance.Value) {
                 Debug.Log(RemainingDistance());
                 Debug.Log("Arrived");
                 navAgent.SetDestination(navAgent.transform.position);
@@ -68,6 +69,20 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             return (transform.position - navAgent.destination).magnitude;
         }
 
-        
+        public override void OnDrawGizmos()
+        {
+#if UNITY_EDITOR
+            if (Owner == null || stoppingDistance.Value == 0)
+            {
+                return;
+            }
+            var oldColor = UnityEditor.Handles.color;
+            UnityEditor.Handles.color = gizmoColor;
+            UnityEditor.Handles.DrawWireDisc(Owner.transform.position, Owner.transform.up, stoppingDistance.Value);
+            UnityEditor.Handles.color = oldColor;
+#endif
+        }
+
+
     }
 }
