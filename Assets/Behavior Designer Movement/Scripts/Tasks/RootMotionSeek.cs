@@ -35,8 +35,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             //Debug.Log("Remaining:"+RemainingDistance());
             //Debug.Log("RemainingDistance" + navAgent.remainingDistance);
             if (RemainingDistance() < stoppingDistance.Value) {
-                Debug.Log(RemainingDistance());
-                Debug.Log("Arrived");
+                //Debug.Log(RemainingDistance());
+                //Debug.Log("Arrived");
                 navAgent.SetDestination(navAgent.transform.position);
                 navAgent.isStopped = true;
                 return TaskStatus.Success;
