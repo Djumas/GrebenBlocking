@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    public float baseHealth = 300;
+    public float baseHealth;
     public float currentHealth;
+    public bool isDead = false;
     Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        currentHealth = baseHealth;
     }
 
     // Update is called once per frame
@@ -20,8 +22,17 @@ public class HealthManager : MonoBehaviour
         
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float amount)
     {
-        anim.SetTrigger("IsHitFront");
+        currentHealth -= amount;
+        if (currentHealth > 0)
+        {
+            anim.SetTrigger("IsHitFront");
+        }
+        else
+        {
+            anim.SetBool("IsDead",true);
+            isDead = true;
+        }
     }
 }

@@ -24,8 +24,10 @@ public class AttackPoint : MonoBehaviour
         if (active) {
             Debug.Log(ID + " Collided " + other);
             enemyHealth = other.GetComponent<HealthManager>();
-            enemyHealth.TakeDamage();
-            active = false;
+            if (enemyHealth != null && !enemyHealth.isDead) {
+                enemyHealth.TakeDamage(currenthit.Damage);
+                active = false;
+            }
         }
     }
 }
