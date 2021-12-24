@@ -2302,10 +2302,10 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396441943}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 9a3877227e45bce4b8250d9f80ec6d98, type: 3}
   m_Controller: {fileID: 9100000, guid: 53dca4b2a055a4544ad7fcec87d0cea9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
+  m_CullingMode: 1
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3949,6 +3949,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8a94f92c15da29d419738ba2da0a8557, type: 2}
+    - target: {fileID: -6760419949266517604, guid: bdc16c11e731fe049ae3e602ba8e2004,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -3639218274160624819, guid: bdc16c11e731fe049ae3e602ba8e2004,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: -56684524906036584, guid: bdc16c11e731fe049ae3e602ba8e2004,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3958,6 +3968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bdc16c11e731fe049ae3e602ba8e2004,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3150294904153978342, guid: bdc16c11e731fe049ae3e602ba8e2004,
         type: 3}
@@ -3979,6 +3994,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2aa5af4b13737b84baf7a8b7057729dc, type: 2}
+    - target: {fileID: 7717210616676310393, guid: bdc16c11e731fe049ae3e602ba8e2004,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9177622762470245989, guid: bdc16c11e731fe049ae3e602ba8e2004,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4665,10 +4685,10 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961602477}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 1740d1f47def06149a2896c42deaf1b9, type: 3}
   m_Controller: {fileID: 9100000, guid: 77989685bb3174b499cfe01b68c32816, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -4988,7 +5008,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1740d1f47def06149a2896c42deaf1b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5781403
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1740d1f47def06149a2896c42deaf1b9,
         type: 3}
@@ -4998,7 +5018,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1740d1f47def06149a2896c42deaf1b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5885984
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1740d1f47def06149a2896c42deaf1b9,
         type: 3}
@@ -5050,10 +5070,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c7b8463fe0b6e0e41b1a9191635fd8cf, type: 2}
+    - target: {fileID: -3742475302921346763, guid: 1740d1f47def06149a2896c42deaf1b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -2697636934591000272, guid: 1740d1f47def06149a2896c42deaf1b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1740d1f47def06149a2896c42deaf1b9,
         type: 3}
       propertyPath: m_Name
       value: Fool
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1740d1f47def06149a2896c42deaf1b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1105237701490893762, guid: 1740d1f47def06149a2896c42deaf1b9,
         type: 3}
