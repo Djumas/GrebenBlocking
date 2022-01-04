@@ -22,10 +22,10 @@ public class AttackPoint : MonoBehaviour
     {
         HealthManager enemyHealth;
         if (active) {
-            Debug.Log(ID + " Collided " + other);
+            //Debug.Log(ID + " Collided " + other);
             enemyHealth = other.GetComponent<HealthManager>();
             if (enemyHealth != null && !enemyHealth.isDead) {
-                enemyHealth.TakeDamage(currenthit.Damage);
+                enemyHealth.TakeDamage(currenthit.Damage,currenthit.damageEffects);
                 active = false;
             }
         }

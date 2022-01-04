@@ -8,6 +8,7 @@ public struct Hit
 {
     public float Damage;
     public float Range;
+    public List<DamageEffectTypes> damageEffects;
     public string attackPointID;
     public AttackPoint attackPoint;
     public float NormalisedStartTime;
@@ -31,7 +32,7 @@ public class SMBEnemyMultiHit : StateMachineBehaviour
                 if (attackPoint.ID == hits[i].attackPointID)
                 {
                     hits[i].attackPoint = attackPoint;
-                    Debug.Log(hits[i].attackPointID+" found");
+                    //Debug.Log(hits[i].attackPointID+" found");
                     break;
                 }
                 Debug.Log(hits[i].attackPointID + " not found");

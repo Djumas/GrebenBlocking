@@ -920,6 +920,7 @@ MonoBehaviour:
   hits:
   - Damage: 50
     Range: 0
+    damageEffects: 00000000
     attackPointID: RightKnee
     attackPoint: {fileID: 0}
     NormalisedStartTime: 20

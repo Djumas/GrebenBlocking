@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DamageEffectTypes {
+    GroinHit
+}
+
 public class HealthManager : MonoBehaviour
 {
     public float baseHealth;
@@ -22,16 +26,39 @@ public class HealthManager : MonoBehaviour
         
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, List<DamageEffectTypes> damageEffects)
     {
+        if (isDead) {
+            return;
+        }
+
+        if (damageEffects.Contains(DamageEffectTypes.GroinHit))
+        {
+            currentHealth -= amount;
+            DeathCheck();
+            if (!isDead) {
+                anim.SetTrigger("IsHitToGroin");
+            }
+            return;
+        }
+
         currentHealth -= amount;
-        if (currentHealth > 0)
+        DeathCheck();
+        if (!isDead)
         {
             anim.SetTrigger("IsHitFront");
         }
-        else
+
+    }
+
+    public void TakeDamage(float amount) {
+        TakeDamage(amount, new List<DamageEffectTypes>());
+    }
+
+    public void DeathCheck() {
+        if (currentHealth <= 0)
         {
-            anim.SetBool("IsDead",true);
+            anim.SetBool("IsDead", true);
             isDead = true;
         }
     }
