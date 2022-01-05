@@ -19,10 +19,17 @@ public enum UnitTypes
     Artist
 }
 
+public enum UnitStatus
+{
+    Alive,
+    Dead
+}
+
 public class Character : MonoBehaviour
 {
     public UnitRoles unitRole;
     public UnitTypes unitType;
+    public UnitStatus unitStatus;
     // Start is called before the first frame update
     void Start()
     {

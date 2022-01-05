@@ -29,7 +29,7 @@ public class UnitManager : MonoSingleton<UnitManager>
         List<Character> charactersInRange = new List<Character>();
         foreach (Character character in characters)
         {
-            if (character.unitRole == UnitRoles.Enemy)
+            if (character.unitRole == UnitRoles.Enemy && character.unitStatus != UnitStatus.Dead)
             {
                 if (Vector3.Magnitude(character.transform.position - player.transform.position) < searchDistance)
                 {

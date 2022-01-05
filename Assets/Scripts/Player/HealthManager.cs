@@ -37,7 +37,7 @@ public class HealthManager : MonoBehaviour
             currentHealth -= amount;
             DeathCheck();
             if (!isDead) {
-                anim.SetTrigger("IsHitToGroin");
+                anim.SetTrigger("isHitToGroin");
             }
             return;
         }
@@ -46,7 +46,7 @@ public class HealthManager : MonoBehaviour
         DeathCheck();
         if (!isDead)
         {
-            anim.SetTrigger("IsHitFront");
+            anim.SetTrigger("isHitFront");
         }
 
     }
@@ -58,8 +58,14 @@ public class HealthManager : MonoBehaviour
     public void DeathCheck() {
         if (currentHealth <= 0)
         {
-            anim.SetBool("IsDead", true);
-            isDead = true;
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        anim.SetBool("IsDead", true);
+        isDead = true;
+        gameObject.GetComponent<Character>().unitStatus = UnitStatus.Dead;
     }
 }

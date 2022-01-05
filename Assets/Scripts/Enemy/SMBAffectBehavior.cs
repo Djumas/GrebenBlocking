@@ -6,16 +6,26 @@ using BehaviorDesigner.Runtime;
 public class SMBAffectBehavior : StateMachineBehaviour
 {
     public BehaviorTree behaviorTree;
-    public string stateToSet = "None";
+    public string behaviorStateToSet = "None";
+    public string animatorBoolToSet = "None";
+    public string behaviorBoolToSet = "None";
     public float timeAmount = 0;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("AffectingBehavior");
         behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
-        if (stateToSet == "Shocked") {
+        if (behaviorStateToSet == "Shocked") {
             behaviorTree.SetVariableValue("ShockTime", timeAmount);
             behaviorTree.SetVariableValue("CurrentStatus", "Shocked");
+        }
+        if (animatorBoolToSet != "None")
+        {
+            animator.SetBool(animatorBoolToSet, true);
+        }
+        if (behaviorBoolToSet != "None")
+        {
+            behaviorTree.SetVariableValue(behaviorBoolToSet, true);
         }
     }
 
