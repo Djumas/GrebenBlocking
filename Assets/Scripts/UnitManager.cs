@@ -25,15 +25,21 @@ public class UnitManager : MonoSingleton<UnitManager>
         
     }
 
-    public List<Character> GetEnemiesInRange(float searchDistance) {
+    public List<Character> GetEnemiesInRange(float searchDistance, float searchAngle) {
         List<Character> charactersInRange = new List<Character>();
+        Vector3 charToPlayerVector;
         foreach (Character character in characters)
         {
             if (character.unitRole == UnitRoles.Enemy && character.unitStatus != UnitStatus.Dead)
             {
-                if (Vector3.Magnitude(character.transform.position - player.transform.position) < searchDistance)
+                charToPlayerVector = character.transform.position - player.transform.position;
+                if (Vector3.Magnitude(charToPlayerVector) < searchDistance)
                 {
-                    charactersInRange.Add(character);
+                    
+                    if (Vector3.Angle(charToPlayerVector,player.transform.forward) < searchAngle/2)
+                    {
+                        charactersInRange.Add(character);
+                    }
                 }
             }
         }
@@ -45,9 +51,9 @@ public class UnitManager : MonoSingleton<UnitManager>
         else { return null; }
     }
 
-    public Character GetClosestEnemy(float searchDistance) {
+    public Character GetClosestEnemy(float searchDistance, float searchAngle) {
         float minDistance = searchDistance;
-        List<Character> charactersInRange = GetEnemiesInRange(searchDistance);
+        List<Character> charactersInRange = GetEnemiesInRange(searchDistance, searchAngle);
         Character closestCharacter = null;
         if (charactersInRange != null)
         {

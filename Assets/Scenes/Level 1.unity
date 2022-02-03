@@ -2496,6 +2496,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -763536842175340324, guid: 43079b0cf61224040953bfb61568fb66, type: 3}
+--- !u!4 &461925996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461925996, guid: 3c8abbadbd4621841ba2ee148d55c221,
+    type: 3}
+  m_PrefabInstance: {fileID: 3781373459549970966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480162889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 43079b0cf61224040953bfb61568fb66,
@@ -2647,8 +2653,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 967926912802957543}
-  m_Follow: {fileID: 967926912802957543}
+  m_LookAt: {fileID: 461925996}
+  m_Follow: {fileID: 461925996}
   m_ShowDebugText: 0
   m_ChildCameras:
   - {fileID: 205711270}
@@ -27502,12 +27508,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3781373459549970966}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &967926912802957543 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4113166649236507377, guid: 3c8abbadbd4621841ba2ee148d55c221,
-    type: 3}
-  m_PrefabInstance: {fileID: 3781373459549970966}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3781373459549970966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27575,31 +27575,6 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1104229201}
-    - target: {fileID: 3781373459292085066, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085069, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085069, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085069, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085069, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.85
-      objectReference: {fileID: 0}
     - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}
       propertyPath: clearShot
@@ -27607,8 +27582,28 @@ PrefabInstance:
       objectReference: {fileID: 513780176}
     - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}
-      propertyPath: xShortActionTreshold
+      propertyPath: cameraFocusDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
+        type: 3}
+      propertyPath: cameraFocusSpeed
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
+        type: 3}
+      propertyPath: useFocusVelocity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
+        type: 3}
+      propertyPath: cameraFocusVelocity
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
+        type: 3}
+      propertyPath: useFocusDirection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4087943488703855502, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}

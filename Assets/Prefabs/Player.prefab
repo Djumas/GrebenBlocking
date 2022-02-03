@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &461925995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461925996}
+  m_Layer: 12
+  m_Name: CameraFocus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &461925996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461925995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3742661015249101108}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &33533383760644030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1576,7 @@ Transform:
   - {fileID: 7769608593863197740}
   - {fileID: 7545765046131514617}
   - {fileID: 4841243627019101585}
+  - {fileID: 461925996}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1575,10 +1606,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 63be3350b6818d045ba13dd4f2f88224, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4346469
-  m_Height: 1.809277
+  m_Radius: 0.2
+  m_Height: 1.7
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9150717, z: 0.20343924}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!95 &3781373459292085071
 Animator:
   serializedVersion: 3
@@ -1613,10 +1644,12 @@ MonoBehaviour:
   smoothing: 5
   rotSpeed: 10
   clearShot: {fileID: 0}
-  xShortActionTreshold: 0.5
+  xShortActionTreshold: 0.2
   xActionDone: 0
   currentTargetCharacter: {fileID: 0}
   kickSearchRange: 2
+  kickSearchAngle: 90
+  cameraFocus: {fileID: 461925995}
 --- !u!114 &3781373459292085068
 MonoBehaviour:
   m_ObjectHideFlags: 0

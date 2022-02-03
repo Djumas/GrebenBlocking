@@ -36,7 +36,7 @@ public class HealthManager : MonoBehaviour
         {
             currentHealth -= amount;
             DeathCheck();
-            if (!isDead) {
+            if (!isDead && !anim.GetBool("isShocked")) {
                 anim.SetTrigger("isHitToGroin");
             }
             return;
