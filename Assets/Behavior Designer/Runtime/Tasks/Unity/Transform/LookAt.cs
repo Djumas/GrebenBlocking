@@ -35,7 +35,10 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform
             }
 
             if (targetLookAt.Value != null) {
-                targetTransform.LookAt(targetLookAt.Value.transform);
+                Vector3 playerToCharVector;
+                playerToCharVector = targetLookAt.Value.transform.position - targetTransform.position;
+                targetTransform.forward = new Vector3(playerToCharVector.x, 0, playerToCharVector.z);
+                //targetTransform.LookAt(targetLookAt.Value.transform);
             } else {
                 targetTransform.LookAt(worldPosition.Value, worldUp);
             }

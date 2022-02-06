@@ -1622,7 +1622,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 9a3877227e45bce4b8250d9f80ec6d98, type: 3}
   m_Controller: {fileID: 9100000, guid: 53dca4b2a055a4544ad7fcec87d0cea9, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1641,6 +1641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50cb13c342e40a44b65d3f57282f178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
   smoothing: 5
   rotSpeed: 10
   clearShot: {fileID: 0}
@@ -1650,6 +1651,14 @@ MonoBehaviour:
   kickSearchRange: 2
   kickSearchAngle: 90
   cameraFocus: {fileID: 461925995}
+  cameraFocusSpeed: 0.1
+  cameraFocusDistance: 1.5
+  cameraFocusDistanceRunning: 4
+  useFocusVelocity: 0
+  cameraFocusVelocity: 0.7
+  useFocusDirection: 0
+  cameraFocusWalkingTreshhold: 0.7
+  walkingTime: 0
 --- !u!114 &3781373459292085068
 MonoBehaviour:
   m_ObjectHideFlags: 0

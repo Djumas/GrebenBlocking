@@ -25,18 +25,21 @@ public class UnitManager : MonoSingleton<UnitManager>
         
     }
 
-    public List<Character> GetEnemiesInRange(float searchDistance, float searchAngle) {
+    public List<Character> GetEnemiesInRange(Transform origin, float searchDistance, float searchAngle) {
         List<Character> charactersInRange = new List<Character>();
-        Vector3 charToPlayerVector;
+        Vector3 charToOriginVector;
+        
         foreach (Character character in characters)
         {
-            if (character.unitRole == UnitRoles.Enemy && character.unitStatus != UnitStatus.Dead)
+            
+            if (character.gameObject != origin.gameObject && character.unitStatus != UnitStatus.Dead)
             {
-                charToPlayerVector = character.transform.position - player.transform.position;
-                if (Vector3.Magnitude(charToPlayerVector) < searchDistance)
+                charToOriginVector = character.transform.position - origin.position;
+                //Debug.Log(character +" "+Vector3.Magnitude(charToOriginVector));
+                if (Vector3.Magnitude(charToOriginVector) < searchDistance)
                 {
                     
-                    if (Vector3.Angle(charToPlayerVector,player.transform.forward) < searchAngle/2)
+                    if (Vector3.Angle(charToOriginVector, origin.forward) < searchAngle/2)
                     {
                         charactersInRange.Add(character);
                     }
@@ -46,26 +49,26 @@ public class UnitManager : MonoSingleton<UnitManager>
 
         if (charactersInRange.Count > 0)
         {
+            //Debug.Log(charactersInRange + " " + charactersInRange.Count);
             return charactersInRange;
+
         }
         else { return null; }
     }
 
-    public Character GetClosestEnemy(float searchDistance, float searchAngle) {
+    public Character GetClosestEnemy(Transform origin, float searchDistance, float searchAngle) {
         float minDistance = searchDistance;
-        List<Character> charactersInRange = GetEnemiesInRange(searchDistance, searchAngle);
+        List<Character> charactersInRange = GetEnemiesInRange(origin, searchDistance, searchAngle);
         Character closestCharacter = null;
         if (charactersInRange != null)
         {
             foreach (Character character in charactersInRange)
             {
-                if (character != player)
-                {
-                    if (Vector3.Magnitude(character.transform.position - player.transform.position) <= minDistance)
+               if (Vector3.Magnitude(character.transform.position - origin.position) <= minDistance)
                     {
                         closestCharacter = character;
                     }
-                }
+    
             }
         }
 

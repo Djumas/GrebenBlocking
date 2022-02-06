@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
 public struct Hit
 {
@@ -15,6 +14,7 @@ public struct Hit
     public float NormalisedStopTime;
     public int ID;
 }
+
 
 public class SMBEnemyMultiHit : StateMachineBehaviour
 {

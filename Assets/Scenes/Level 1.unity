@@ -27580,31 +27580,6 @@ PrefabInstance:
       propertyPath: clearShot
       value: 
       objectReference: {fileID: 513780176}
-    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: cameraFocusDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: cameraFocusSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: useFocusVelocity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: cameraFocusVelocity
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: useFocusDirection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4087943488703855502, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}
       propertyPath: m_Name
@@ -28395,15 +28370,5 @@ PrefabInstance:
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[16]
       value: 
       objectReference: {fileID: 919132148710021528}
-    - target: {fileID: 8959822507295060473, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8959822507295060473, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
-        type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f03f27350f44e4458d7294ce9f1bd9c, type: 3}

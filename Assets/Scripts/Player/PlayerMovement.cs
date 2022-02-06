@@ -17,9 +17,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject cameraFocus;
     public float cameraFocusSpeed = 0.1f;
     public float cameraFocusDistance = 2f;
+    public float cameraFocusDistanceRunning = 4f;
     public bool useFocusVelocity = false;
     public float cameraFocusVelocity = 0.35f;
     public bool useFocusDirection = false;
+    public float cameraFocusWalkingTreshhold = 0.5f;
+    public float walkingTime = 0f;
 
     [HideInInspector]
     private Animator anim;
@@ -28,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     public Gamepad gamepad;
     private float xButtonPressedFor = 0f;
     private CinemachineVirtualCamera currentCamera;
+    private bool inRunMode = false;
+    private bool isWalking = false;
+
     
 
     private void Start()
@@ -115,19 +121,22 @@ public class PlayerMovement : MonoBehaviour
     public void XInstantAction()
     {
         Debug.Log("XInstantAction");
+        anim.SetTrigger("xInstant");
     }
 
     public void XShortAction()
     {
         Debug.Log("XShortAction");
-        Kick();
+        //Kick();
+        anim.SetTrigger("xShort");
     }
 
-    public void Kick()
+    public void TurnToClosestEnemy()
     {
-        Character closestEnemy = UnitManager.Instance.GetClosestEnemy(kickSearchRange, kickSearchAngle);
+        Debug.Log("TurnToClosestEnemy");
+        Character closestEnemy = UnitManager.Instance.GetClosestEnemy(transform, kickSearchRange, kickSearchAngle);
         Vector3 playerToCharVector;
-        anim.SetTrigger("Kick");
+        
         if (closestEnemy != null)
         {
             playerToCharVector = closestEnemy.transform.position - transform.position;
@@ -142,53 +151,81 @@ public class PlayerMovement : MonoBehaviour
         
         float h = gamepad.leftStick.x.ReadValue();
         float v = gamepad.leftStick.y.ReadValue();
-        float xVelocity;
 
         if (gamepad.rightShoulder.isPressed)
         {
-            anim.SetBool("inRunMode", true);
-        }
-        else {
-            anim.SetBool("inRunMode", false);
-        }
-
-        
-        bool isWalking = (Mathf.Abs(h) >= 0.3 || Mathf.Abs(v) >= 0.3);
-        anim.SetBool("isMoving", isWalking);
-
-        if (useFocusDirection)
-        {
-            SetCameraFocusByDirection();
+            inRunMode = true;
         }
         else
         {
-            if (useFocusVelocity)
-            {
-                xVelocity = currentCamera.transform.InverseTransformDirection(rigidBody.velocity).x * cameraFocusVelocity / cameraFocusDistance;
-                SetCameraFocus(xVelocity);
-            }
-            else
-            {
-                SetCameraFocus(h);
-            }
+            inRunMode = false;
         }
+        anim.SetBool("inRunMode", inRunMode);
+
+
+        isWalking = (Mathf.Abs(h) >= 0.3 || Mathf.Abs(v) >= 0.3);
+        anim.SetBool("isMoving", isWalking);
+ 
+        if (useFocusDirection)
+        {
+            SetCameraFocusByDirection();
+        } else
+        {
+            SetCameraFocus(h);
+        }
+
         
 
 
         if (isWalking)
         {
-            direction = h * currentCamera.transform.right + v * (currentCamera.transform.forward-(currentCamera.transform.forward.y)*(new Vector3(0,1,0)));
+            walkingTime += Time.deltaTime;
+            direction = h * currentCamera.transform.right + v * (currentCamera.transform.forward - (currentCamera.transform.forward.y) * (new Vector3(0, 1, 0)));
             if (!inFocus)
             {
                 rotQuat.SetLookRotation(direction.normalized);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotQuat, Time.deltaTime * rotSpeed);
             }
-            
+
         }
+        else {
+            walkingTime = 0f;
+        }
+
     }
 
     private void SetCameraFocus(float h) {
-        cameraFocus.transform.position = Vector3.Lerp(cameraFocus.transform.position, (transform.position + h * currentCamera.transform.right*cameraFocusDistance), cameraFocusSpeed);
+        float xVelocity;
+
+
+        if (useFocusVelocity)
+        {
+            if (walkingTime > cameraFocusWalkingTreshhold || inRunMode)
+            {
+                xVelocity = currentCamera.transform.InverseTransformDirection(rigidBody.velocity).x * cameraFocusVelocity;
+            }
+            else
+            {
+                xVelocity = 0;
+            }
+            cameraFocus.transform.position = Vector3.Lerp(cameraFocus.transform.position, (transform.position + xVelocity * currentCamera.transform.right), cameraFocusSpeed);
+        }
+        else
+        {
+            if (walkingTime < cameraFocusWalkingTreshhold && !inRunMode)
+            {
+                h = 0;
+            }
+
+            if (!inRunMode)
+            {
+                cameraFocus.transform.position = Vector3.Lerp(cameraFocus.transform.position, (transform.position + h * currentCamera.transform.right * cameraFocusDistance), cameraFocusSpeed);
+            }
+            else
+            {
+                cameraFocus.transform.position = Vector3.Lerp(cameraFocus.transform.position, (transform.position + h * currentCamera.transform.right * cameraFocusDistanceRunning), cameraFocusSpeed);
+            }
+        }
 
     }
 
