@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum DamageEffectTypes {
-    GroinHit
+    GroinHit,
+    ChestKick
 }
 
 public class HealthManager : MonoBehaviour

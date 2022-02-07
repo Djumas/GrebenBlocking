@@ -9,6 +9,7 @@ public class SMBAffectBehavior : StateMachineBehaviour
     public string behaviorStateToSet = "None";
     public string animatorBoolToSet = "None";
     public string behaviorBoolToSet = "None";
+    public string animatorTriggerToSet = "None";
     public float timeAmount = 0;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -26,6 +27,10 @@ public class SMBAffectBehavior : StateMachineBehaviour
         if (behaviorBoolToSet != "None")
         {
             behaviorTree.SetVariableValue(behaviorBoolToSet, true);
+        }
+        if (animatorTriggerToSet != "None")
+        {
+            animator.SetTrigger(animatorTriggerToSet);
         }
     }
 

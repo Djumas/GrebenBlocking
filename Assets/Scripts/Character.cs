@@ -8,7 +8,7 @@ public enum UnitRoles
     Enemy,
     Ally,
     Neutral,
-    Boss,
+    Boss
 }
 
 public enum UnitTypes
