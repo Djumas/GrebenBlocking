@@ -13,11 +13,13 @@ public class HealthManager : MonoBehaviour
     public float currentHealth;
     public bool isDead = false;
     Animator anim;
+    Character character;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        character = GetComponent<Character>();
         currentHealth = baseHealth;
     }
 
@@ -29,28 +31,31 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float amount, List<DamageEffectTypes> damageEffects, GameObject origin)
     {
-        if (isDead) {
+        if (isDead){
             return;
         }
 
-        if (damageEffects.Contains(DamageEffectTypes.GroinHit))
-        {
-            currentHealth -= amount;
-            DeathCheck();
-            TurnToTarget(origin);
-            if (!isDead && !anim.GetBool("isShocked")) {
-                anim.SetTrigger("isHitToGroin");
-            }
+        if (character.unitStatus == UnitStatus.KnockOut){
             return;
         }
 
         currentHealth -= amount;
         DeathCheck();
-        if (!isDead)
+
+        if (damageEffects.Contains(DamageEffectTypes.GroinHit))
         {
-            anim.SetTrigger("isHitFront");
+         TurnToTarget(origin);
+         anim.SetTrigger("isHitToGroin");
+         return;
+        }
+        if (damageEffects.Contains(DamageEffectTypes.ChestKick))
+        {
+            TurnToTarget(origin);
+            anim.SetTrigger("isKickedToChest");
+            return;
         }
 
+        anim.SetTrigger("isHitFront");
     }
 
     public void TakeDamage(float amount) {
@@ -60,7 +65,7 @@ public class HealthManager : MonoBehaviour
 
     public void TurnToTarget(GameObject target)
     {
-        Debug.Log("TurnToClosestEnemy");
+        //Debug.Log("TurnToClosestEnemy");
         Vector3 targetToCharVector;
 
         if (target != null)

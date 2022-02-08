@@ -8,30 +8,48 @@ public class SMBAffectBehavior : StateMachineBehaviour
     public BehaviorTree behaviorTree;
     public string behaviorStateToSet = "None";
     public string animatorBoolToSet = "None";
+    public bool animatorBoolToSetValue = true;
     public string behaviorBoolToSet = "None";
+    public bool behaviorBoolToSetValue = true;
     public string animatorTriggerToSet = "None";
     public float timeAmount = 0;
+    public float delayAmount = 0;
+    public bool setCharacterStatus = false;
+    public UnitStatus statusToSet = UnitStatus.Alive;
+    private Character character;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("AffectingBehavior");
+        character = animator.gameObject.GetComponent<Character>();
+        if (character.unitStatus == UnitStatus.Dead) {
+            return;
+        }
+            if (setCharacterStatus)
+        {
+            character.unitStatus = statusToSet;
+        }
+        //Debug.Log("AffectingBehavior");
         behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
-        if (behaviorStateToSet == "Shocked") {
+        if (behaviorStateToSet == "KnockOut") {
             behaviorTree.SetVariableValue("ShockTime", timeAmount);
-            behaviorTree.SetVariableValue("CurrentStatus", "Shocked");
+            behaviorTree.SetVariableValue("CurrentStatus", "KnockOut");
         }
         if (animatorBoolToSet != "None")
         {
-            animator.SetBool(animatorBoolToSet, true);
+            animator.SetBool(animatorBoolToSet, animatorBoolToSetValue);
         }
         if (behaviorBoolToSet != "None")
         {
-            behaviorTree.SetVariableValue(behaviorBoolToSet, true);
+            behaviorTree.SetVariableValue(behaviorBoolToSet, behaviorBoolToSetValue);
         }
         if (animatorTriggerToSet != "None")
         {
             animator.SetTrigger(animatorTriggerToSet);
         }
+
+        
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

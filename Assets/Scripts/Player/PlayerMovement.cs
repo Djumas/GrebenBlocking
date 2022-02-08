@@ -34,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
     private bool inRunMode = false;
     private bool isWalking = false;
 
+    private Character character;
     
 
     private void Start()
     {
        gamepad = Gamepad.current;
-        rigidBody = GetComponent<Rigidbody>();
+       rigidBody = GetComponent<Rigidbody>();
+       character = GetComponent<Character>();
     }
 
     void Awake()
@@ -63,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
 
     void ReadJoystick()
     {
+        if (character.unitStatus == UnitStatus.KnockOut) {
+            return;
+        }
 
         if (gamepad.xButton.wasPressedThisFrame)
         {
@@ -147,8 +152,11 @@ public class PlayerMovement : MonoBehaviour
 
 
     public void ReadMovement()
-    {        
-        
+    {
+        if (character.unitStatus == UnitStatus.KnockOut)
+        {
+            return;
+        }
         float h = gamepad.leftStick.x.ReadValue();
         float v = gamepad.leftStick.y.ReadValue();
 

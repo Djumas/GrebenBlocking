@@ -7,9 +7,12 @@ public class RootMotionNavMeshMovement : MonoBehaviour
 {
     public NavMeshAgent navAgent;
     public Animator anim;
+    public Character character;
+
     // Start is called before the first frame update
     void Start()
     {
+        character = GetComponent<Character>();
         navAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         navAgent.updatePosition = false;
@@ -18,6 +21,21 @@ public class RootMotionNavMeshMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (character.unitStatus == UnitStatus.Dead)
+        {
+            navAgent.isStopped = false;
+            return;
+        }
+
+        if (character.unitStatus == UnitStatus.KnockOut)
+        {
+            navAgent.isStopped = true;
+        }
+        else {
+            navAgent.isStopped = false;
+        }
+
+
         navAgent.nextPosition = transform.position;
         if ((navAgent.remainingDistance > navAgent.stoppingDistance)&&!navAgent.isStopped)
         {
@@ -30,4 +48,6 @@ public class RootMotionNavMeshMovement : MonoBehaviour
             return;
         }
     }
+
+    
 }

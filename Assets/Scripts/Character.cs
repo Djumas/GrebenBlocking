@@ -22,7 +22,8 @@ public enum UnitTypes
 public enum UnitStatus
 {
     Alive,
-    Dead
+    Dead,
+    KnockOut
 }
 
 public class Character : MonoBehaviour
