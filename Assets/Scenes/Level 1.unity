@@ -27575,11 +27575,6 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1104229201}
-    - target: {fileID: 3781373459292085067, guid: 3c8abbadbd4621841ba2ee148d55c221,
-        type: 3}
-      propertyPath: baseHealth
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}
       propertyPath: clearShot

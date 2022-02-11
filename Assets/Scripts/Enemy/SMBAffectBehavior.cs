@@ -12,6 +12,7 @@ public class SMBAffectBehavior : StateMachineBehaviour
     public string behaviorBoolToSet = "None";
     public bool behaviorBoolToSetValue = true;
     public string animatorTriggerToSet = "None";
+    public string behaviorTimeToSet = "None";
     public float timeAmount = 0;
     public float delayAmount = 0;
     public bool setCharacterStatus = false;
@@ -22,7 +23,10 @@ public class SMBAffectBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         character = animator.gameObject.GetComponent<Character>();
+        behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
+
         if (character.unitStatus == UnitStatus.Dead) {
+            behaviorTree.enabled = false;
             return;
         }
             if (setCharacterStatus)
@@ -30,11 +34,22 @@ public class SMBAffectBehavior : StateMachineBehaviour
             character.unitStatus = statusToSet;
         }
         //Debug.Log("AffectingBehavior");
-        behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
-        if (behaviorStateToSet == "KnockOut") {
-            behaviorTree.SetVariableValue("ShockTime", timeAmount);
-            behaviorTree.SetVariableValue("CurrentStatus", "KnockOut");
+
+        if (behaviorStateToSet != "None")
+        {
+            behaviorTree.SetVariableValue("CurrentStatus", behaviorStateToSet);
         }
+
+        if (behaviorTimeToSet != "None")
+        {
+            behaviorTree.SetVariableValue(behaviorTimeToSet, timeAmount);
+        }
+
+
+
+
+
+
         if (animatorBoolToSet != "None")
         {
             animator.SetBool(animatorBoolToSet, animatorBoolToSetValue);
@@ -47,7 +62,6 @@ public class SMBAffectBehavior : StateMachineBehaviour
         {
             animator.SetTrigger(animatorTriggerToSet);
         }
-
         
 
     }

@@ -14,12 +14,14 @@ public class HealthManager : MonoBehaviour
     public bool isDead = false;
     Animator anim;
     Character character;
+    Rigidbody rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         character = GetComponent<Character>();
+        rigidbody = GetComponent<Rigidbody>();
         currentHealth = baseHealth;
     }
 
@@ -88,5 +90,8 @@ public class HealthManager : MonoBehaviour
         anim.SetBool("IsDead", true);
         isDead = true;
         gameObject.GetComponent<Character>().unitStatus = UnitStatus.Dead;
+        rigidbody.detectCollisions = false;
+        rigidbody.isKinematic = true;
+
     }
 }

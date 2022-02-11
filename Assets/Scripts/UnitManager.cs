@@ -58,18 +58,48 @@ public class UnitManager : MonoSingleton<UnitManager>
 
     public Character GetClosestEnemy(Transform origin, float searchDistance, float searchAngle) {
         float minDistance = searchDistance;
+        float currentDistance;
         List<Character> charactersInRange = GetEnemiesInRange(origin, searchDistance, searchAngle);
         Character closestCharacter = null;
         if (charactersInRange != null)
         {
             foreach (Character character in charactersInRange)
             {
-               if (Vector3.Magnitude(character.transform.position - origin.position) <= minDistance)
+                currentDistance = Vector3.Magnitude(character.transform.position - origin.position);
+               if (currentDistance <= minDistance)
                     {
+                        minDistance = currentDistance;
                         closestCharacter = character;
                     }
     
             }
+        }
+
+        return closestCharacter;
+    }
+
+    public Character GetClosestEnemyByAngle(Transform origin, float searchDistance, float searchAngle)
+    {
+        float minAngle = 180;
+        float currentAngle;
+        List<Character> charactersInRange = GetEnemiesInRange(origin, searchDistance, searchAngle);
+        Character closestCharacter = null;
+        if (charactersInRange != null)
+        {
+            
+            foreach (Character character in charactersInRange)
+            {
+                var charToOriginVector = character.transform.position - origin.position;
+                currentAngle = Vector3.Angle(charToOriginVector, origin.forward);
+                    if (currentAngle < minAngle)
+                    {
+                    minAngle = currentAngle;
+                    closestCharacter = character;
+                    }              
+
+            }         
+            
+
         }
 
         return closestCharacter;

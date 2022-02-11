@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SMBInvokeScriptMethod : StateMachineBehaviour
+public class SMBPlayerMovementAction : StateMachineBehaviour
 {
-
-    MonoBehaviour script;
-    public string scriptType;
-    public string methodName;
-    public string parameterName;
-    public float parameter;
+    public bool turnToClosestEnemy = false;
+    public float angleRange;
+    public float distance;
+    PlayerMovement playerMovement;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        script = UnitManager.Instance.player.GetComponent(scriptType) as MonoBehaviour;
-        script.Invoke(methodName, 0);
+        playerMovement = animator.gameObject.GetComponent<PlayerMovement>();
+
+        if (turnToClosestEnemy)
+        {
+            playerMovement.TurnToClosestEnemy(angleRange, distance);
+        }
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

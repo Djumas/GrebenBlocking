@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
     public void TurnToClosestEnemy()
     {
         Debug.Log("TurnToClosestEnemy");
-        Character closestEnemy = UnitManager.Instance.GetClosestEnemy(transform, kickSearchRange, kickSearchAngle);
+        Character closestEnemy = UnitManager.Instance.GetClosestEnemyByAngle(transform, kickSearchRange, kickSearchAngle);
         Vector3 playerToCharVector;
         
         if (closestEnemy != null)
@@ -149,6 +149,21 @@ public class PlayerMovement : MonoBehaviour
             transform.forward = new Vector3(playerToCharVector.x,0, playerToCharVector.z);
         }
     }
+
+    public void TurnToClosestEnemy(float angleRange, float distance)
+    {
+        Debug.Log("TurnToClosestEnemy");
+        Character closestEnemy = UnitManager.Instance.GetClosestEnemyByAngle(transform, distance, angleRange);
+        Vector3 playerToCharVector;
+
+        if (closestEnemy != null)
+        {
+            playerToCharVector = closestEnemy.transform.position - transform.position;
+            //transform.LookAt(closestEnemy.transform.position, Vector3.up);
+            transform.forward = new Vector3(playerToCharVector.x, 0, playerToCharVector.z);
+        }
+    }
+
 
 
     public void ReadMovement()

@@ -73,6 +73,7 @@ MonoBehaviour:
   behaviorBoolToSet: None
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: None
+  behaviorTimeToSet: KnockOutTime
   timeAmount: 4
   delayAmount: 0
   setCharacterStatus: 0
@@ -447,6 +448,7 @@ MonoBehaviour:
   behaviorBoolToSet: None
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: None
+  behaviorTimeToSet: None
   timeAmount: 1
   delayAmount: 0
   setCharacterStatus: 1
@@ -492,6 +494,7 @@ MonoBehaviour:
   behaviorBoolToSet: isDead
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: None
+  behaviorTimeToSet: None
   timeAmount: 0
   delayAmount: 0
   setCharacterStatus: 1
@@ -821,8 +824,8 @@ MonoBehaviour:
     damage: 50
     range: 1
     damageEffects: 01000000
-    normalisedStartTime: 10
-    normalisedStopTime: 95
+    normalisedStartTime: 25
+    normalisedStopTime: 75
     angleCenter: 0
     angleRange: 360
     ID: 0
@@ -1050,6 +1053,7 @@ MonoBehaviour:
   behaviorBoolToSet: None
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: DropKick
+  behaviorTimeToSet: None
   timeAmount: 0
   delayAmount: 0
   setCharacterStatus: 0
@@ -1462,6 +1466,7 @@ MonoBehaviour:
   behaviorBoolToSet: None
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: None
+  behaviorTimeToSet: None
   timeAmount: 0
   delayAmount: 0
   setCharacterStatus: 1
