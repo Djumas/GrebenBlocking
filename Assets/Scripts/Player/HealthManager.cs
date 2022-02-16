@@ -14,14 +14,14 @@ public class HealthManager : MonoBehaviour
     public bool isDead = false;
     Animator anim;
     Character character;
-    Rigidbody rigidbody;
+    Rigidbody rigiBody;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         character = GetComponent<Character>();
-        rigidbody = GetComponent<Rigidbody>();
+        rigiBody = GetComponent<Rigidbody>();
         currentHealth = baseHealth;
     }
 
@@ -53,6 +53,7 @@ public class HealthManager : MonoBehaviour
         if (damageEffects.Contains(DamageEffectTypes.ChestKick))
         {
             TurnToTarget(origin);
+            Debug.Log(gameObject+" KickedToChest");
             anim.SetTrigger("isKickedToChest");
             return;
         }
@@ -90,8 +91,8 @@ public class HealthManager : MonoBehaviour
         anim.SetBool("IsDead", true);
         isDead = true;
         gameObject.GetComponent<Character>().unitStatus = UnitStatus.Dead;
-        rigidbody.detectCollisions = false;
-        rigidbody.isKinematic = true;
+        rigiBody.detectCollisions = false;
+        rigiBody.isKinematic = true;
 
     }
 }

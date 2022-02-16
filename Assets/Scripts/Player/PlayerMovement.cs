@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public SOTest testScriptableObject;
     public Rigidbody rigidBody;
     public float smoothing = 5f;
     public float rotSpeed = 1;

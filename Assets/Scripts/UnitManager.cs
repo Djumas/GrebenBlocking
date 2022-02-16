@@ -25,6 +25,10 @@ public class UnitManager : MonoSingleton<UnitManager>
         
     }
 
+    public GameObject GetCurrentTarget(GameObject unit) {
+        return player.gameObject;
+    }
+
     public List<Character> GetEnemiesInRange(Transform origin, float searchDistance, float searchAngle) {
         List<Character> charactersInRange = new List<Character>();
         Vector3 charToOriginVector;
