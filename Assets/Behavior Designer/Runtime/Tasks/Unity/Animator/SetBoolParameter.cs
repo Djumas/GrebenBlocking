@@ -16,7 +16,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator
         [Tooltip("Should the value be reverted back to its original value after it has been set?")]
         public bool setOnce;
 
-        private int hashID;
+        //private int hashID;
         private Animator animator;
         private GameObject prevGameObject;
 
@@ -36,10 +36,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator
                 return TaskStatus.Failure;
             }
 
-            hashID = UnityEngine.Animator.StringToHash(paramaterName.Value);
+            /*hashID = UnityEngine.Animator.StringToHash(paramaterName.Value);
 
             bool prevValue = animator.GetBool(hashID);
-            animator.SetBool(hashID, boolValue.Value);
+            animator.SetBool(hashID, boolValue.Value);*/
+            bool prevValue = animator.GetBool(paramaterName.Value);
+            animator.SetBool(paramaterName.Value, boolValue.Value);
             if (setOnce) {
                 StartCoroutine(ResetValue(prevValue));
             }
@@ -49,7 +51,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator
         public IEnumerator ResetValue(bool origVale)
         {
             yield return null;
-            animator.SetBool(hashID, origVale);
+            //animator.SetBool(hashID, origVale);
+            animator.SetBool(paramaterName.Value, origVale);
         }
 
         public override void OnReset()
