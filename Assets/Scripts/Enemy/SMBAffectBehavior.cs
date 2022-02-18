@@ -17,6 +17,7 @@ public class SMBAffectBehavior : StateMachineBehaviour
     public float delayAmount = 0;
     public bool setCharacterStatus = false;
     public UnitStatus statusToSet = UnitStatus.Alive;
+    public bool restartBehavior = false;
     private Character character;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -45,11 +46,6 @@ public class SMBAffectBehavior : StateMachineBehaviour
             behaviorTree.SetVariableValue(behaviorTimeToSet, timeAmount);
         }
 
-
-
-
-
-
         if (animatorBoolToSet != "None")
         {
             animator.SetBool(animatorBoolToSet, animatorBoolToSetValue);
@@ -61,6 +57,11 @@ public class SMBAffectBehavior : StateMachineBehaviour
         if (animatorTriggerToSet != "None")
         {
             animator.SetTrigger(animatorTriggerToSet);
+        }
+
+        if (restartBehavior) {
+            behaviorTree.enabled = false;
+            behaviorTree.enabled = true;
         }
         
 

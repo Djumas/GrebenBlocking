@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviorTree: {fileID: 0}
-  behaviorStateToSet: Shocked
-  animatorBoolToSet: isShocked
+  behaviorStateToSet: KnockOut
+  animatorBoolToSet: isKnockOut
   animatorBoolToSetValue: 1
   behaviorBoolToSet: None
   behaviorBoolToSetValue: 1
@@ -78,6 +78,7 @@ MonoBehaviour:
   delayAmount: 0
   setCharacterStatus: 0
   statusToSet: 0
+  restartBehavior: 1
 --- !u!1101 &-8834985406302608162
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -318,6 +319,7 @@ AnimatorState:
   - {fileID: 4640865803892758590}
   m_StateMachineBehaviours:
   - {fileID: 2069415375493243364}
+  - {fileID: 3365540721429016322}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -430,6 +432,7 @@ MonoBehaviour:
   delayAmount: 0
   setCharacterStatus: 1
   statusToSet: 2
+  restartBehavior: 0
 --- !u!1101 &-6093681731157046598
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -476,6 +479,7 @@ MonoBehaviour:
   delayAmount: 0
   setCharacterStatus: 1
   statusToSet: 1
+  restartBehavior: 0
 --- !u!1101 &-5670744151460385677
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -1187,6 +1191,7 @@ MonoBehaviour:
   delayAmount: 0
   setCharacterStatus: 0
   statusToSet: 0
+  restartBehavior: 0
 --- !u!1102 &2925506059762170391
 AnimatorState:
   serializedVersion: 5
@@ -1291,6 +1296,31 @@ MonoBehaviour:
     angleCenter: 0
     angleRange: 180
     ID: 0
+--- !u!114 &3365540721429016322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd92f52690c92449e92f64be2fec29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorTree: {fileID: 0}
+  behaviorStateToSet: None
+  animatorBoolToSet: None
+  animatorBoolToSetValue: 1
+  behaviorBoolToSet: None
+  behaviorBoolToSetValue: 1
+  animatorTriggerToSet: None
+  behaviorTimeToSet: None
+  timeAmount: 0
+  delayAmount: 0
+  setCharacterStatus: 0
+  statusToSet: 0
+  restartBehavior: 1
 --- !u!1101 &3552935929169766270
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1643,6 +1673,7 @@ MonoBehaviour:
   delayAmount: 0
   setCharacterStatus: 1
   statusToSet: 0
+  restartBehavior: 0
 --- !u!1101 &6747985271505371668
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

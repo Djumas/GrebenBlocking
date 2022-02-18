@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void CheckJoystickX(bool released) {
+        Debug.Log("CheckJoystickX");
         //Checking x-botton pressing result: Was it a "single" or continious (but short) pressing. Invoking corresponding action.
         if (released)
         {
