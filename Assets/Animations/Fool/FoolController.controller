@@ -1375,12 +1375,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit:
     damage: 30
-    range: 1.5
+    range: 1
     damageEffects: 
     normalisedStartTime: 13
     normalisedStopTime: 30
     angleCenter: 0
-    angleRange: 180
+    angleRange: 120
     ID: 0
 --- !u!114 &3365540721429016322
 MonoBehaviour:
@@ -1448,7 +1448,7 @@ MonoBehaviour:
     normalisedStartTime: 70
     normalisedStopTime: 85
     angleCenter: 0
-    angleRange: 180
+    angleRange: 120
     ID: 0
 --- !u!1102 &3621259769761176263
 AnimatorState:
