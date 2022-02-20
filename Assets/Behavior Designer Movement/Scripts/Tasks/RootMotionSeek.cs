@@ -15,13 +15,16 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         public NavMeshAgent navAgent;
         public SharedFloat stoppingDistance;
         public Color gizmoColor = Color.yellow;
+        public bool useResample = false;
+        public SharedFloat resampleDistance = 2.0f;
 
 
         public override void OnStart()
         {
-            base.OnStart();
+            //base.OnStart();
             navAgent = GetComponent<NavMeshAgent>();
             navAgent.isStopped = false;
+            navAgent.stoppingDistance = stoppingDistance.Value;
         }
 
         // Seek the destination. Return success once the agent has reached the destination.
@@ -37,7 +40,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             if (RemainingDistance() < stoppingDistance.Value) {
                 //Debug.Log(RemainingDistance());
                 //Debug.Log("Arrived");
-                navAgent.SetDestination(navAgent.transform.position);
+                //navAgent.SetDestination(navAgent.transform.position);
                 navAgent.isStopped = true;
                 return TaskStatus.Success;
             }
@@ -45,17 +48,25 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             return TaskStatus.Running;
         }
 
-        public void MoveToTarget() {            
+        public void MoveToTarget() {
             navAgent.SetDestination(Target());
         }
 
         // Return targetPosition if target is null
         private Vector3 Target()
         {
+            Vector3 result;
             if (target.Value != null) {
-                return target.Value.transform.position;
+                result = target.Value.transform.position;
+            } else result = targetPosition.Value;
+
+            if (useResample)
+            {
+                NavMeshHit hit;
+                NavMesh.SamplePosition(result, out hit, resampleDistance.Value, NavMesh.AllAreas);
+                result = hit.position;
             }
-            return targetPosition.Value;
+            return result;
         }
 
         public override void OnReset()

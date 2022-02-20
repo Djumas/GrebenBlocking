@@ -8,6 +8,9 @@ public class RootMotionNavMeshMovement : MonoBehaviour
     public NavMeshAgent navAgent;
     public Animator anim;
     public Character character;
+    public bool drawPath = true;
+    private float drawPathTreshhold = 0.1f;
+    private NavMeshPath path;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +50,14 @@ public class RootMotionNavMeshMovement : MonoBehaviour
             //Debug.Log("NavAgent Stopped");
             return;
         }
+
+        if ((navAgent.destination-transform.position).magnitude > drawPathTreshhold && drawPath) {
+            path = navAgent.path;
+            for (int i = 0; i < path.corners.Length - 1; i++) {
+                Debug.DrawLine(path.corners[i],path.corners[i+1],Color.red);
+            }
+        }
+
     }
 
     
