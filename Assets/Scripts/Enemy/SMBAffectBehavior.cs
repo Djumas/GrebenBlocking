@@ -26,7 +26,7 @@ public class SMBAffectBehavior : StateMachineBehaviour
         character = animator.gameObject.GetComponent<Character>();
         behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
 
-        if (character.unitStatus == UnitStatus.Dead) {
+        if (character.unitStatus == UnitStatus.Dead && behaviorTree != null) {
             behaviorTree.enabled = false;
             return;
         }

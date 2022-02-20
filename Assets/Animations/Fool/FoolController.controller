@@ -896,7 +896,7 @@ MonoBehaviour:
     range: 1
     damageEffects: 01000000
     normalisedStartTime: 25
-    normalisedStopTime: 75
+    normalisedStopTime: 90
     angleCenter: 0
     angleRange: 360
     ID: 0
