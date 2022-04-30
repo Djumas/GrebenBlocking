@@ -3868,6 +3868,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fool (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8112890343299889974, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8925314655751397772, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4070,6 +4075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fool (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112890343299889974, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925314655751397772, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
         type: 3}
@@ -4786,6 +4796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fool (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112890343299889974, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925314655751397772, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
         type: 3}
@@ -5776,6 +5791,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fool (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8112890343299889974, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8925314655751397772, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6109,6 +6129,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fool (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112890343299889974, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8925314655751397772, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
         type: 3}
@@ -6516,6 +6541,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fool (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112890343299889974, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925314655751397772, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
         type: 3}
