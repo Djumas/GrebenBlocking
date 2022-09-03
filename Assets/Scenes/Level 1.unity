@@ -11335,7 +11335,7 @@ GameObject:
   - component: {fileID: 1831802269}
   - component: {fileID: 1831802268}
   m_Layer: 5
-  m_Name: HUDCanvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28057,11 +28057,22 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1104229201}
+    - target: {fileID: 3781373459292085066, guid: 3c8abbadbd4621841ba2ee148d55c221,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}
       propertyPath: clearShot
       value: 
       objectReference: {fileID: 513780176}
+    - target: {fileID: 3781373459292085070, guid: 3c8abbadbd4621841ba2ee148d55c221,
+        type: 3}
+      propertyPath: testScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 276e531150551424d9adca0f8fc23870,
+        type: 2}
     - target: {fileID: 4087943488703855502, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}
       propertyPath: m_Name
