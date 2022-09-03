@@ -21,7 +21,7 @@ TagManager:
   - Dead
   - AttackCollider
   - HealthCollider
-  - 
+  - EnvCollider
   - 
   - 
   - 

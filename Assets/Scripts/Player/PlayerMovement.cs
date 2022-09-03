@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private CinemachineVirtualCamera currentCamera;
     private bool inRunMode = false;
     private bool isWalking = false;
-    private CharacterController _controller;
+    //private CharacterController _controller;
     private Character character;
     private Vector3 _deltaPosition;
     
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
        gamepad = Gamepad.current;
        //rigidBody = GetComponent<Rigidbody>();
        character = GetComponent<Character>();
-       _controller = GetComponent<CharacterController>();
+       //_controller = GetComponent<CharacterController>();
     }
 
     void Awake()
@@ -218,20 +218,7 @@ public class PlayerMovement : MonoBehaviour
             walkingTime = 0f;
         }
     }
-
-    private Vector3 GetDeltaPosition() {
-        _deltaPosition = anim.deltaPosition;
-        _deltaPosition.y = Physics.gravity.y * Time.deltaTime;
-        return _deltaPosition;
-    }
-
-    private void OnAnimatorMove()
-    {
-        
-        _controller.Move(GetDeltaPosition());
-
-    }
-
+    
     private void SetCameraFocus(float h) {
         float xVelocity;
         if (useFocusVelocity)
