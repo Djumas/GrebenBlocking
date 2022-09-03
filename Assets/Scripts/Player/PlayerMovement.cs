@@ -6,12 +6,12 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
     public SOTest testScriptableObject;
-    //public Rigidbody rigidBody;
     public float smoothing = 5f;
     public float rotSpeed = 1;
     public CinemachineClearShot clearShot;
     public float xShortActionTreshold = 0.5f;
-    public bool xActionDone = false;
+    public float yShortActionTreshold = 0.5f;
+    
     public Character currentTargetCharacter;
     public static bool inFocus = false;
     public float kickSearchRange = 2.0f;
@@ -25,35 +25,39 @@ public class PlayerMovement : MonoBehaviour
     public bool useFocusDirection = false;
     public float cameraFocusWalkingTreshhold = 0.5f;
     public float walkingTime = 0f;
+    public float dodgeWalkTimeTresh = 0.3f;
+    public float dodgePressTimeTresh = 0.3f;
     
 
     [HideInInspector]
     private Animator anim;
     private Vector3 direction = new Vector3(0, 0, 0);
     private Quaternion rotQuat;
-    public Gamepad gamepad;
+    private Gamepad gamepad;
     private float xButtonPressedFor = 0f;
+    private float yButtonPressedFor = 0f;
+    private float aButtonPressedFor = 0f;
     private CinemachineVirtualCamera currentCamera;
     private bool inRunMode = false;
+    private bool dodged = false;
     private bool isWalking = false;
-    //private CharacterController _controller;
+    public bool isDodging = false;
+    public bool isAttacking = false;
     private Character character;
-    private Vector3 _deltaPosition;
+    private Vector3 deltaPosition;
+    private bool aButtonPressed;
+    private CharControllerRMAnim controllerRmAnim;
     
+    private bool xActionDone = false;
+    private bool yActionDone = false;
 
-    private void Start()
-    {
-       gamepad = Gamepad.current;
-       //rigidBody = GetComponent<Rigidbody>();
-       character = GetComponent<Character>();
-       //_controller = GetComponent<CharacterController>();
-    }
-
-    void Awake()
+    private void Awake()
     {
        currentCamera = (CinemachineVirtualCamera)clearShot.LiveChild;
-        anim = GetComponent<Animator>();
-       
+       anim = GetComponent<Animator>();
+       gamepad = Gamepad.current;
+       character = GetComponent<Character>();
+       controllerRmAnim = GetComponent<CharControllerRMAnim>();
     }
 
     private void Update()
@@ -61,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         UpdateCamera();
         ReadMovement();
         ReadJoystick();
+        controllerRmAnim.updateY = !isDodging;
     }
 
     private void UpdateCamera() {
@@ -68,12 +73,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void ReadJoystick()
+    private void ReadJoystick()
     {
         if (character.unitStatus == UnitStatus.KnockOut) {
             return;
         }
-
+        #region xButton manage
         if (gamepad.xButton.wasPressedThisFrame)
         {
             xActionDone = false;
@@ -87,18 +92,68 @@ public class PlayerMovement : MonoBehaviour
                 CheckJoystickX(false);
             }
         }
-
+        
         if (gamepad.xButton.wasReleasedThisFrame)
         {
             CheckJoystickX(true);
             xButtonPressedFor = 0f;
         }
+        #endregion
+        #region yButton manage
+     
+        if (gamepad.yButton.wasPressedThisFrame)
+        {
+            yActionDone = false;
+            yButtonPressedFor = 0f;
+        }
+        else
+        {
+            if (gamepad.yButton.isPressed)
+            {
+                yButtonPressedFor += Time.deltaTime;
+                CheckJoystickY(false);
+            }
+        }
 
+        if (gamepad.yButton.wasReleasedThisFrame)
+        {
+            CheckJoystickY(true);
+            yButtonPressedFor = 0f;
+        }
+        
+        #endregion 
+        
 
+        if (gamepad.aButton.isPressed)
+        {
+            aButtonPressedFor += Time.deltaTime;
+            CheckJoystickA(false);
+        }
+        
+        if (gamepad.aButton.wasReleasedThisFrame)
+        {
+            CheckJoystickA(true);
+            aButtonPressedFor = 0f;
+        }
+        
+        
     }
 
-    void CheckJoystickX(bool released) {
-        Debug.Log("CheckJoystickX");
+    private void CheckJoystickA(bool released)
+    {
+        if (!released)
+        {
+            aButtonPressed = true;
+        }
+        else
+        {
+            aButtonPressed = false;
+            dodged = false;
+        }
+    }
+
+    private void CheckJoystickX(bool released) {
+//        Debug.Log("CheckJoystickX");
         //Checking x-botton pressing result: Was it a "single" or continious (but short) pressing. Invoking corresponding action.
         if (released)
         {
@@ -128,20 +183,64 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+    
+    private void CheckJoystickY(bool released) {
+        Debug.Log("CheckJoystickX");
+        //Checking x-botton pressing result: Was it a "single" or continious (but short) pressing. Invoking corresponding action.
+        if (released)
+        {
+            if (!yActionDone) {
+                if (yButtonPressedFor < yShortActionTreshold)
+                {
+                    YInstantAction();
+                }
+                else
+                {
+                    YShortAction();
+                }
+            }
+            yActionDone = false;
+        }
+        
+        if(!released)
+        {
+            if (!yActionDone)
+            {
+                if (yButtonPressedFor >= yShortActionTreshold)
+                {
+                    YShortAction();
+                    yActionDone = true;
+                }                
+            }
+        }
 
+    }
+
+    public void YInstantAction()
+    {
+        Debug.Log("YInstantAction");
+        anim.SetTrigger("yInstant");
+    }
+
+    public void YShortAction()
+    {
+        Debug.Log("YShortAction");
+        anim.SetTrigger("yShort");
+    }
+    
     public void XInstantAction()
     {
-        Debug.Log("XInstantAction");
+//        Debug.Log("XInstantAction");
         anim.SetTrigger("xInstant");
     }
 
     public void XShortAction()
     {
-        Debug.Log("XShortAction");
+//        Debug.Log("XShortAction");
         //Kick();
         anim.SetTrigger("xShort");
     }
-
+/*
     public void TurnToClosestEnemy()
     {
         Debug.Log("TurnToClosestEnemy");
@@ -154,11 +253,11 @@ public class PlayerMovement : MonoBehaviour
             //transform.LookAt(closestEnemy.transform.position, Vector3.up);
             transform.forward = new Vector3(playerToCharVector.x,0, playerToCharVector.z);
         }
-    }
+    }*/
 
     public void TurnToClosestEnemy(float angleRange, float distance)
     {
-        Debug.Log("TurnToClosestEnemy");
+//        Debug.Log("TurnToClosestEnemy");
         Character closestEnemy = UnitManager.Instance.GetClosestEnemyByAngle(transform, distance, angleRange);
         Vector3 playerToCharVector;
 
@@ -178,6 +277,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+
         float h = gamepad.leftStick.x.ReadValue();
         float v = gamepad.leftStick.y.ReadValue();
 
@@ -202,23 +302,40 @@ public class PlayerMovement : MonoBehaviour
         {
             SetCameraFocus(h);
         }
+        
+        if (aButtonPressed && !dodged && isWalking && (aButtonPressedFor <= dodgePressTimeTresh))
+        {
+            if (walkingTime > dodgeWalkTimeTresh)
+            {
+                anim.SetTrigger("DodgeForward");
+            }
+            else
+            {
+                //anim.SetTrigger("DodgeForward");
+                anim.SetTrigger("DodgeDir");
+            }
 
+            dodged = true;
+        }
+
+        direction = h * currentCamera.transform.right + v * (currentCamera.transform.forward - (currentCamera.transform.forward.y) * (new Vector3(0, 1, 0)).normalized);
+        if(!isDodging) SetMoveAnim();
+        
         if (isWalking)
         {
             walkingTime += Time.deltaTime;
-            direction = h * currentCamera.transform.right + v * (currentCamera.transform.forward - (currentCamera.transform.forward.y) * (new Vector3(0, 1, 0)));
-            if (!inFocus)
+            
+            if (!inFocus && !isDodging && !isAttacking)
             {
                 rotQuat.SetLookRotation(direction.normalized);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotQuat, Time.deltaTime * rotSpeed);
             }
-
         }
         else {
             walkingTime = 0f;
         }
     }
-    
+
     private void SetCameraFocus(float h) {
         float xVelocity;
         if (useFocusVelocity)
@@ -259,9 +376,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetMoveAnim()
     {
-        Vector3 blendTreeDirection = transform.InverseTransformDirection(direction);
+        var blendTreeDirection = transform.InverseTransformDirection(direction);
+        var dodgeTreeDirection = blendTreeDirection.normalized;
 
         anim.SetFloat("X", blendTreeDirection.x);
         anim.SetFloat("Z", blendTreeDirection.z);
+        
+        anim.SetFloat("dodgeX", dodgeTreeDirection.x);
+        anim.SetFloat("dodgeZ", dodgeTreeDirection.z);
+        //Debug.Log(dodgeTreeDirection.magnitude);
     }
 }

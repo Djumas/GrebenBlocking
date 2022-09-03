@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityCharacterController;
 using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
@@ -11,6 +12,7 @@ public class CharControllerRMAnim : MonoBehaviour
     private CharacterController characterController;
     private Animator animator;
     private Vector3 deltaPosition;
+    public bool updateY = true;
     
     private void Start()
     {
@@ -20,7 +22,7 @@ public class CharControllerRMAnim : MonoBehaviour
 
     private Vector3 GetDeltaPosition() {
         deltaPosition = animator.deltaPosition;
-        deltaPosition.y = Physics.gravity.y * Time.deltaTime;
+        if(updateY && !characterController.isGrounded) deltaPosition.y = Physics.gravity.y * Time.deltaTime;
         return deltaPosition;
     }
     
