@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
     public SOTest testScriptableObject;
-    public Rigidbody rigidBody;
+    //public Rigidbody rigidBody;
     public float smoothing = 5f;
     public float rotSpeed = 1;
     public CinemachineClearShot clearShot;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public bool useFocusDirection = false;
     public float cameraFocusWalkingTreshhold = 0.5f;
     public float walkingTime = 0f;
+    
 
     [HideInInspector]
     private Animator anim;
@@ -35,15 +36,17 @@ public class PlayerMovement : MonoBehaviour
     private CinemachineVirtualCamera currentCamera;
     private bool inRunMode = false;
     private bool isWalking = false;
-
+    private CharacterController _controller;
     private Character character;
+    private Vector3 _deltaPosition;
     
 
     private void Start()
     {
        gamepad = Gamepad.current;
-       rigidBody = GetComponent<Rigidbody>();
+       //rigidBody = GetComponent<Rigidbody>();
        character = GetComponent<Character>();
+       _controller = GetComponent<CharacterController>();
     }
 
     void Awake()
@@ -200,9 +203,6 @@ public class PlayerMovement : MonoBehaviour
             SetCameraFocus(h);
         }
 
-        
-
-
         if (isWalking)
         {
             walkingTime += Time.deltaTime;
@@ -217,18 +217,28 @@ public class PlayerMovement : MonoBehaviour
         else {
             walkingTime = 0f;
         }
+    }
+
+    private Vector3 GetDeltaPosition() {
+        _deltaPosition = anim.deltaPosition;
+        _deltaPosition.y = Physics.gravity.y * Time.deltaTime;
+        return _deltaPosition;
+    }
+
+    private void OnAnimatorMove()
+    {
+        
+        _controller.Move(GetDeltaPosition());
 
     }
 
     private void SetCameraFocus(float h) {
         float xVelocity;
-
-
         if (useFocusVelocity)
         {
             if (walkingTime > cameraFocusWalkingTreshhold || inRunMode)
             {
-                xVelocity = currentCamera.transform.InverseTransformDirection(rigidBody.velocity).x * cameraFocusVelocity;
+                xVelocity = currentCamera.transform.InverseTransformDirection(anim.velocity).x * cameraFocusVelocity;
             }
             else
             {
