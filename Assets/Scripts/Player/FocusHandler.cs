@@ -38,7 +38,7 @@ public class FocusHandler : MonoBehaviour
             InitFocus();            
         }
 
-        if (PlayerMovement.inFocus) {
+        if (PlayerMovement.setFocus) {
            if(CheckEnemyStatus()){
                 PerformFocus();
             }
@@ -51,14 +51,14 @@ public class FocusHandler : MonoBehaviour
         FindEnemies();
         if (enemiesInFocusRange.Count > 0)
         {
-            PlayerMovement.inFocus = !PlayerMovement.inFocus;
-            pointer.GetComponent<Renderer>().enabled = PlayerMovement.inFocus;
+            PlayerMovement.setFocus = !PlayerMovement.setFocus;
+            pointer.GetComponent<Renderer>().enabled = PlayerMovement.setFocus;
 
         }
         else
         {
             Debug.Log("No enemies in range");
-            PlayerMovement.inFocus = false;
+            PlayerMovement.setFocus = false;
             pointer.GetComponent<Renderer>().enabled = false;
         }
     }

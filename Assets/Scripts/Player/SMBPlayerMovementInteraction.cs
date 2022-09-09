@@ -7,8 +7,6 @@ public class SMBPlayerMovementInteraction : StateMachineBehaviour
     public bool turnToClosestEnemy = false;
     public float angleRange;
     public float distance;
-    public bool setDodging = false;
-    public bool dodgingValue = false;
     public bool setAttacking = false;
     public bool attackingValue = false;
     
@@ -21,8 +19,6 @@ public class SMBPlayerMovementInteraction : StateMachineBehaviour
         {
             playerMovement.TurnToClosestEnemy(angleRange, distance);
         }
-
-        if (setDodging) playerMovement.isDodging = dodgingValue;
         if (setAttacking) playerMovement.isAttacking = attackingValue;
     }
 }

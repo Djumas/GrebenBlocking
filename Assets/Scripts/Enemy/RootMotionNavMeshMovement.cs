@@ -9,12 +9,12 @@ public class RootMotionNavMeshMovement : MonoBehaviour
     public Animator anim;
     public Character character;
     public bool drawPath = true;
-    private float drawPathTreshhold = 0.1f;
+    private const float DrawPathTreshhold = 0.1f;
     //private NavMeshPath path;
     public bool useBlendTree = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         character = GetComponent<Character>();
         navAgent = GetComponent<NavMeshAgent>();
@@ -23,8 +23,12 @@ public class RootMotionNavMeshMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        var forwardDir = transform.forward;
+        var rightDir = transform.right;
+        var position = transform.position;
+        
         if (character.unitStatus == UnitStatus.Dead)
         {
             navAgent.isStopped = false;
@@ -45,15 +49,15 @@ public class RootMotionNavMeshMovement : MonoBehaviour
             navAgent.updateRotation = false;
         }
 
-        navAgent.nextPosition = transform.position;
+        navAgent.nextPosition = position;
         if ((navAgent.remainingDistance > navAgent.stoppingDistance)&&!navAgent.isStopped)
         {
             anim.SetBool("isMoving", true);
             var normalisedDirection = navAgent.desiredVelocity.normalized;
-            var yVector = Vector3.Project(normalisedDirection, transform.forward);
-            var xVector = Vector3.Project(normalisedDirection, transform.right);
-            var yDirectiron = yVector.magnitude * Vector3.Dot(yVector, transform.forward);
-            var xDirectiron = xVector.magnitude * Vector3.Dot(xVector, transform.right);
+            var yVector = Vector3.Project(normalisedDirection, forwardDir);
+            var xVector = Vector3.Project(normalisedDirection, rightDir);
+            var yDirectiron = yVector.magnitude * Vector3.Dot(yVector, forwardDir);
+            var xDirectiron = xVector.magnitude * Vector3.Dot(xVector, rightDir);
 
             anim.SetFloat("XDirection", xDirectiron);
             anim.SetFloat("YDirection", yDirectiron);
@@ -66,14 +70,14 @@ public class RootMotionNavMeshMovement : MonoBehaviour
             return;
         }
 
-        if ((navAgent.destination-transform.position).magnitude > drawPathTreshhold && drawPath) {
+        if ((navAgent.destination-position).magnitude > DrawPathTreshhold && drawPath) {
             /*
             var path = navAgent.path;
             for (int i = 0; i < path.corners.Length - 1; i++) {
                 Debug.DrawLine(path.corners[i],path.corners[i+1],Color.red);
             }
             */
-            Debug.DrawLine(transform.position,transform.position+navAgent.desiredVelocity);
+            Debug.DrawLine(position,position+navAgent.desiredVelocity);
         }
 
     }
