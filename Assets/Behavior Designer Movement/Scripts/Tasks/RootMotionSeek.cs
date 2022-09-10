@@ -12,19 +12,29 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         public SharedGameObject target;
         [Tooltip("If target is null then use the target position")]
         public SharedVector3 targetPosition;
-        public NavMeshAgent navAgent;
+        private NavMeshAgent navAgent;
+        private RootMotionNavMeshMovement rootMotionNavMeshMovement;
         public SharedFloat stoppingDistance;
         public Color gizmoColor = Color.yellow;
         public bool useResample = false;
         public SharedFloat resampleDistance = 2.0f;
+        //public bool updateRotation = true;
+        //private bool storedUpdateRotation;
+        public bool useBlendTree = false;
+        private bool storedUseBlendTree;
 
 
         public override void OnStart()
         {
             //base.OnStart();
             navAgent = GetComponent<NavMeshAgent>();
+            rootMotionNavMeshMovement = GetComponent<RootMotionNavMeshMovement>();
             navAgent.isStopped = false;
             navAgent.stoppingDistance = stoppingDistance.Value;
+            //storedUpdateRotation = navAgent.updateRotation;
+            //navAgent.updateRotation = updateRotation;
+            storedUseBlendTree = rootMotionNavMeshMovement.useBlendTree;
+            rootMotionNavMeshMovement.useBlendTree = useBlendTree;
         }
 
         // Seek the destination. Return success once the agent has reached the destination.
@@ -42,6 +52,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 //Debug.Log("Arrived");
                 //navAgent.SetDestination(navAgent.transform.position);
                 navAgent.isStopped = true;
+                //navAgent.updateRotation = storedUpdateRotation;
+                rootMotionNavMeshMovement.useBlendTree = storedUseBlendTree;
                 return TaskStatus.Success;
             }
 

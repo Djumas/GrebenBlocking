@@ -44,10 +44,7 @@ public class RootMotionNavMeshMovement : MonoBehaviour
         }
 
         anim.SetBool("UseBlendTree", useBlendTree);
-        if (useBlendTree)
-        {
-            navAgent.updateRotation = false;
-        }
+        navAgent.updateRotation = !useBlendTree; 
 
         navAgent.nextPosition = position;
         if ((navAgent.remainingDistance > navAgent.stoppingDistance)&&!navAgent.isStopped)

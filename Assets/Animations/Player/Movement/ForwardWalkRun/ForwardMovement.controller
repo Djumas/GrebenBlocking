@@ -875,6 +875,24 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-2782015245601276943
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de5229edefc4b5479b98b20a62e7327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorBoolsToSet: []
+  animatorTriggersToSet: []
+  animatorExitBoolsToSet: []
+  animatorExitTriggersToSet:
+  - name: yInstant
+    value: 0
 --- !u!206 &-2345040154703255172
 BlendTree:
   m_ObjectHideFlags: 1
@@ -1496,6 +1514,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 4870498766819487541}
   - {fileID: -6108964796930365822}
+  - {fileID: -2782015245601276943}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1674,6 +1693,8 @@ MonoBehaviour:
     value: 0
   - name: HeavyHit
     value: 0
+  animatorExitBoolsToSet: []
+  animatorExitTriggersToSet: []
 --- !u!114 &2292050457914121315
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2007,6 +2028,8 @@ MonoBehaviour:
   - name: isAttacking
     value: 0
   animatorTriggersToSet: []
+  animatorExitBoolsToSet: []
+  animatorExitTriggersToSet: []
 --- !u!114 &4870498766819487541
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2247,6 +2270,8 @@ MonoBehaviour:
     value: 0
   - name: HeavyHit
     value: 0
+  animatorExitBoolsToSet: []
+  animatorExitTriggersToSet: []
 --- !u!1102 &7346157246546699250
 AnimatorState:
   serializedVersion: 5

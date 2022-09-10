@@ -81,29 +81,13 @@ public class PlayerMovement : MonoBehaviour
         currentCamera = (CinemachineVirtualCamera)clearShot.LiveChild;
     }
 
-
     private void ReadJoystick()
     {
         if (character.unitStatus == UnitStatus.KnockOut) return;
         #region xButton manage
         if (gamepad.xButton.wasPressedThisFrame)
         {
-            xActionDone = false;
-            xButtonPressedFor = 0f;
-        }
-        else
-        {
-            if (gamepad.xButton.isPressed)
-            {
-                xButtonPressedFor += Time.deltaTime;
-                CheckJoystickX(false);
-            }
-        }
-        
-        if (gamepad.xButton.wasReleasedThisFrame)
-        {
             CheckJoystickX(true);
-            xButtonPressedFor = 0f;
         }
         #endregion
         #region yButton manage
@@ -121,19 +105,16 @@ public class PlayerMovement : MonoBehaviour
                 CheckJoystickY(false);
             }
         }
-
         if (gamepad.yButton.wasReleasedThisFrame)
         {
             CheckJoystickY(true);
             yButtonPressedFor = 0f;
         }
         #endregion
-        
         #region aButton manage
         if (gamepad.aButton.isPressed) CheckJoystickA(false);
         if (gamepad.aButton.wasReleasedThisFrame) CheckJoystickA(true);
         #endregion
-        
         #region lShoulder manage
         if (gamepad.leftShoulder.wasPressedThisFrame) CheckLeftShoulder(true);
         if (gamepad.leftShoulder.wasReleasedThisFrame) CheckLeftShoulder(false);
@@ -168,34 +149,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckJoystickX(bool released) 
     {
-
-        if (released)
+        XInstantAction();
+        /*if (released)
         {
-            if (!xActionDone) {
-                if (xButtonPressedFor < xShortActionTreshold)
-                {
-                    XInstantAction();
-                }
-                else
-                {
-                    XShortAction();
-                }
-            }
+            if (xButtonPressedFor < xShortActionTreshold && !xActionDone) XInstantAction(); 
+            else XShortAction();
             xActionDone = false;
         }
         
-        if(!released)
-        {
-            if (!xActionDone)
-            {
-                if (xButtonPressedFor >= xShortActionTreshold)
-                {
-                    XShortAction();
-                    xActionDone = true;
-                }                
-            }
-        }
-
+        if (xButtonPressedFor >= xShortActionTreshold && !xActionDone && !released)
+        { 
+             XShortAction();
+             xActionDone = true;
+                    
+        }*/
     }
     
     private void CheckJoystickY(bool released) 

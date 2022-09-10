@@ -19,10 +19,7 @@ public class FleePointManager : MonoSingleton<FleePointManager>
 
     public GameObject GetFleePoint(GameObject target)
     {
-        if (fleePoints.Length > 0)
-        {
-            return fleePoints[0].gameObject;
-        }
+        if (fleePoints.Length > 0) return fleePoints[Random.Range(0,fleePoints.Length)].gameObject;
         else
         {
             Debug.Log("No FleePoints available");

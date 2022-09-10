@@ -31,6 +31,7 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float amount, List<DamageEffectTypes> damageEffects, GameObject origin)
     {
+        Debug.Log("DamageTaken by "+gameObject);
         if (isDead){
             return;
         }

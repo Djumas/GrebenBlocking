@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class SMBSimpleHit : StateMachineBehaviour
 {
-    private bool active = false;
+    private bool attackActive = false;
     private bool attackStarted = false;
+    private bool attackStopped = false;
     public SimpleHitData hit;
 
     
@@ -18,7 +19,7 @@ public class SMBSimpleHit : StateMachineBehaviour
     {
         //Debug.Log("Attacking status:" + animator.GetBool("isAttacking"));
         attackStarted = false;
-        active = false;
+        attackActive = false;
         animator.SetBool("isAttacking", true);
     }
 
@@ -31,20 +32,25 @@ public class SMBSimpleHit : StateMachineBehaviour
         
         if (currentTime >= hit.normalisedStartTime && !attackStarted) {
             attackStarted = true;
-            active = true;
+            attackActive = true;
+            //Debug.Log("Simple hit Activated:"+currentTime);
+           
         }
 
-        if (currentTime >= hit.normalisedStopTime)
+        if (currentTime >= hit.normalisedStopTime && !attackStopped)
         {
-            active = false;
+            attackStopped = true;
+            attackActive = false;
+            //Debug.Log("Simple hit Deactivated:"+currentTime);
         }
 
-        if (active) {
-
+        if (attackActive) {
+            //Debug.Log("Simple hit Performing:"+currentTime);
             List<Character> enemiesInRange = UnitManager.Instance.GetEnemiesInRange(animator.gameObject.transform, hit.range, hit.angleRange);
+            //Debug.Log(enemiesInRange);
             if (enemiesInRange != null)
             {
-                active = false;
+                attackActive = false;
                 foreach (Character enemy in enemiesInRange)
                 {
                     HealthManager enemyHealth = enemy.gameObject.GetComponent<HealthManager>();
@@ -58,9 +64,9 @@ public class SMBSimpleHit : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Attacking status:" + animator.GetBool("isAttacking"));
-        Debug.Log("Action:" + hit);
-        Debug.Log("Time:" + stateInfo.normalizedTime);
+        //Debug.Log("Attacking status:" + animator.GetBool("isAttacking"));
+        //Debug.Log("Action:" + hit);
+        //Debug.Log("Time:" + stateInfo.normalizedTime);
         //animator.SetBool("isAttacking", false);  
     }
 
