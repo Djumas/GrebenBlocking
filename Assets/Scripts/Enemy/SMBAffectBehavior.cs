@@ -6,24 +6,24 @@ using BehaviorDesigner.Runtime;
 public class SMBAffectBehavior : StateMachineBehaviour
 {
     public BehaviorTree behaviorTree;
-    public string behaviorStateToSet = "None";
-    public string animatorBoolToSet = "None";
+    public string behaviorStateToSet = "";
+    public string animatorBoolToSet = "";
     public bool animatorBoolToSetValue = true;
-    public string behaviorBoolToSet = "None";
+    public string behaviorBoolToSet = "";
     public bool behaviorBoolToSetValue = true;
-    public string animatorTriggerToSet = "None";
-    public string behaviorTimeToSet = "None";
+    public string animatorTriggerToSet = "";
+    public string behaviorTimeToSet = "";
     public float timeAmount = 0;
     public float delayAmount = 0;
     public bool setCharacterStatus = false;
     public UnitStatus statusToSet = UnitStatus.Alive;
     public bool restartBehavior = false;
-    private Character character;
+    private Unit character;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        character = animator.gameObject.GetComponent<Character>();
+        character = animator.gameObject.GetComponent<Unit>();
         behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
 
         if (character.unitStatus == UnitStatus.Dead && behaviorTree != null) {
@@ -36,25 +36,25 @@ public class SMBAffectBehavior : StateMachineBehaviour
         }
         //Debug.Log("AffectingBehavior");
 
-        if (behaviorStateToSet != "None")
+        if (behaviorStateToSet != "")
         {
             behaviorTree.SetVariableValue("CurrentStatus", behaviorStateToSet);
         }
 
-        if (behaviorTimeToSet != "None")
+        if (behaviorTimeToSet != "")
         {
             behaviorTree.SetVariableValue(behaviorTimeToSet, timeAmount);
         }
 
-        if (animatorBoolToSet != "None")
+        if (animatorBoolToSet != "")
         {
             animator.SetBool(animatorBoolToSet, animatorBoolToSetValue);
         }
-        if (behaviorBoolToSet != "None")
+        if (behaviorBoolToSet != "")
         {
             behaviorTree.SetVariableValue(behaviorBoolToSet, behaviorBoolToSetValue);
         }
-        if (animatorTriggerToSet != "None")
+        if (animatorTriggerToSet != "")
         {
             animator.SetTrigger(animatorTriggerToSet);
         }

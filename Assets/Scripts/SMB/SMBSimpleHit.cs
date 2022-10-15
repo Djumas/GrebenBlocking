@@ -46,12 +46,12 @@ public class SMBSimpleHit : StateMachineBehaviour
 
         if (attackActive) {
             //Debug.Log("Simple hit Performing:"+currentTime);
-            List<Character> enemiesInRange = UnitManager.Instance.GetEnemiesInRange(animator.gameObject.transform, hit.range, hit.angleRange);
+            List<Unit> enemiesInRange = UnitManager.Instance.GetEnemiesInRange(animator.gameObject.transform, hit.range, hit.angleRange);
             //Debug.Log(enemiesInRange);
             if (enemiesInRange != null)
             {
                 attackActive = false;
-                foreach (Character enemy in enemiesInRange)
+                foreach (Unit enemy in enemiesInRange)
                 {
                     HealthManager enemyHealth = enemy.gameObject.GetComponent<HealthManager>();
                     enemyHealth.TakeDamage(hit.damage, hit.damageEffects, animator.gameObject);

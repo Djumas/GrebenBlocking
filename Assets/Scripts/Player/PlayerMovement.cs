@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float leftStickDirectedTresh = 0.3f;
     public float leftStickResetTresh = 0.1f;
     
-    public Character currentTargetCharacter;
+    public Unit currentTargetCharacter;
     public static bool setFocus = false;
     public float kickSearchRange = 2.0f;
     public float kickSearchAngle = 90f;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isLeftStickReset = false;
     public bool isDodging = false;
     public bool isAttacking = false;
-    private Character character;
+    private Unit character;
     private Vector3 deltaPosition;
     private bool aButtonPressed;
     private bool lShoulderPressed;
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
        currentCamera = (CinemachineVirtualCamera)clearShot.LiveChild;
        anim = GetComponent<Animator>();
        gamepad = Gamepad.current;
-       character = GetComponent<Character>();
+       character = GetComponent<Unit>();
        controllerRmAnim = GetComponent<CharControllerRMAnim>();
        gameplaySpeedManager = GameplaySpeedManager.Instance;
     }
@@ -226,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
     public void TurnToClosestEnemy()
     {
         Debug.Log("TurnToClosestEnemy");
-        Character closestEnemy = UnitManager.Instance.GetClosestEnemyByAngle(transform, kickSearchRange, kickSearchAngle);
+        Unit closestEnemy = UnitManager.Instance.GetClosestEnemyByAngle(transform, kickSearchRange, kickSearchAngle);
         Vector3 playerToCharVector;
         
         if (closestEnemy != null)
@@ -240,7 +240,7 @@ public class PlayerMovement : MonoBehaviour
     public void TurnToClosestEnemy(float angleRange, float distance)
     {
 //        Debug.Log("TurnToClosestEnemy");
-        Character closestEnemy = UnitManager.Instance.GetClosestEnemyByAngle(transform, distance, angleRange);
+        Unit closestEnemy = UnitManager.Instance.GetClosestEnemyByAngle(transform, distance, angleRange);
         Vector3 playerToCharVector;
 
         if (closestEnemy != null)

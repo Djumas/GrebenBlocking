@@ -11,15 +11,16 @@ public class HealthManager : MonoBehaviour
 {
     public float baseHealth;
     public float currentHealth;
+    public bool isImmortal = false;
     public bool isDead = false;
     private Animator anim;
-    private Character character;
+    private Unit unit;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        character = GetComponent<Character>();
+        unit = GetComponent<Unit>();
         currentHealth = baseHealth;
     }
 
@@ -31,17 +32,20 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float amount, List<DamageEffectTypes> damageEffects, GameObject origin)
     {
-        Debug.Log("DamageTaken by "+gameObject);
+        Debug.Log("DamageTaken by "+gameObject+" from"+origin);
+        
         if (isDead){
             return;
         }
 
-        if (character.unitStatus == UnitStatus.KnockOut){
+        if (unit.unitStatus == UnitStatus.KnockOut){
             return;
         }
 
-        currentHealth -= amount;
-        DeathCheck();
+        if (!isImmortal) {
+            currentHealth -= amount;
+            DeathCheck();
+        }
 
         if (damageEffects.Contains(DamageEffectTypes.GroinHit))
         {
@@ -89,7 +93,7 @@ public class HealthManager : MonoBehaviour
     {
         anim.SetBool("IsDead", true);
         isDead = true;
-        gameObject.GetComponent<Character>().unitStatus = UnitStatus.Dead;
+        gameObject.GetComponent<Unit>().unitStatus = UnitStatus.Dead;
 //        rigiBody.detectCollisions = false;
 //        rigiBody.isKinematic = true;
 

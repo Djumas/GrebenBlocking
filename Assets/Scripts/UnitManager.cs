@@ -4,101 +4,101 @@ using UnityEngine;
 
 public class UnitManager : MonoSingleton<UnitManager>
 {
-    public Character[] characters;
-    public Character player;
+    public Unit[] units;
+    public Unit player;
 
     // Start is called before the first frame update
     void Start()
     {
-        characters = FindObjectsOfType<Character>();
-        foreach (Character character in characters) {
-            if (character.unitRole == UnitRoles.Player) {
-                player = character;
+        units = FindObjectsOfType<Unit>();
+        foreach (Unit unit in units) {
+            if (unit.unitRole == UnitRoles.Player) {
+                player = unit;
             }
         }
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
         
     }
+
 
     public GameObject GetCurrentTarget(GameObject unit) {
         return player.gameObject;
     }
 
-    public List<Character> GetEnemiesInRange(Transform origin, float searchDistance, float searchAngle) {
-        List<Character> charactersInRange = new List<Character>();
-        Vector3 charToOriginVector;
+    public List<Unit> GetEnemiesInRange(Transform origin, float searchDistance, float searchAngle) {
+        List<Unit> unitsInRange = new List<Unit>();
+        Vector3 unitToOriginVector;
         
-        foreach (Character character in characters)
+        foreach (Unit unit in units)
         {
             
-            if (character.gameObject != origin.gameObject && character.unitStatus != UnitStatus.Dead)
+            if (unit.gameObject != origin.gameObject && unit.unitStatus != UnitStatus.Dead)
             {
-                charToOriginVector = character.transform.position - origin.position;
+                unitToOriginVector = unit.transform.position - origin.position;
                 //Debug.Log(character +" "+Vector3.Magnitude(charToOriginVector));
-                if (Vector3.Magnitude(charToOriginVector) < searchDistance)
+                if (Vector3.Magnitude(unitToOriginVector) < searchDistance)
                 {
                     
-                    if (Vector3.Angle(charToOriginVector, origin.forward) < searchAngle/2)
+                    if (Vector3.Angle(unitToOriginVector, origin.forward) < searchAngle/2)
                     {
-                        charactersInRange.Add(character);
+                        unitsInRange.Add(unit);
                     }
                 }
             }
         }
 
-        if (charactersInRange.Count > 0)
+        if (unitsInRange.Count > 0)
         {
             //Debug.Log(charactersInRange + " " + charactersInRange.Count);
-            return charactersInRange;
+            return unitsInRange;
 
         }
         else { return null; }
     }
 
-    public Character GetClosestEnemy(Transform origin, float searchDistance, float searchAngle) {
+    public Unit GetClosestEnemy(Transform origin, float searchDistance, float searchAngle) {
         float minDistance = searchDistance;
         float currentDistance;
-        List<Character> charactersInRange = GetEnemiesInRange(origin, searchDistance, searchAngle);
-        Character closestCharacter = null;
-        if (charactersInRange != null)
+        List<Unit> unitsInRange = GetEnemiesInRange(origin, searchDistance, searchAngle);
+        Unit closestUnit = null;
+        if (unitsInRange != null)
         {
-            foreach (Character character in charactersInRange)
+            foreach (Unit unit in unitsInRange)
             {
-                currentDistance = Vector3.Magnitude(character.transform.position - origin.position);
+                currentDistance = Vector3.Magnitude(unit.transform.position - origin.position);
                if (currentDistance <= minDistance)
                     {
                         minDistance = currentDistance;
-                        closestCharacter = character;
+                        closestUnit = unit;
                     }
     
             }
         }
 
-        return closestCharacter;
+        return closestUnit;
     }
 
-    public Character GetClosestEnemyByAngle(Transform origin, float searchDistance, float searchAngle)
+    public Unit GetClosestEnemyByAngle(Transform origin, float searchDistance, float searchAngle)
     {
         float minAngle = 180;
         float currentAngle;
-        List<Character> charactersInRange = GetEnemiesInRange(origin, searchDistance, searchAngle);
-        Character closestCharacter = null;
-        if (charactersInRange != null)
+        List<Unit> unitsInRange = GetEnemiesInRange(origin, searchDistance, searchAngle);
+        Unit closestUnit = null;
+        if (unitsInRange != null)
         {
             
-            foreach (Character character in charactersInRange)
+            foreach (Unit unit in unitsInRange)
             {
-                var charToOriginVector = character.transform.position - origin.position;
-                currentAngle = Vector3.Angle(charToOriginVector, origin.forward);
+                var unitToOriginVector = unit.transform.position - origin.position;
+                currentAngle = Vector3.Angle(unitToOriginVector, origin.forward);
                     if (currentAngle < minAngle)
                     {
                     minAngle = currentAngle;
-                    closestCharacter = character;
+                    closestUnit = unit;
                     }              
 
             }         
@@ -106,6 +106,6 @@ public class UnitManager : MonoSingleton<UnitManager>
 
         }
 
-        return closestCharacter;
+        return closestUnit;
     }
 }

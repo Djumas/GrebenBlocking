@@ -11,7 +11,7 @@ public enum UnitRoles
     Boss
 }
 
-public enum UnitTypes
+public enum UnitType
 {
     Player,
     Fool,
@@ -26,10 +26,10 @@ public enum UnitStatus
     KnockOut
 }
 
-public class Character : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     public UnitRoles unitRole;
-    public UnitTypes unitType;
+    public UnitType unitType;
     public UnitStatus unitStatus;
     // Start is called before the first frame update
     void Start()

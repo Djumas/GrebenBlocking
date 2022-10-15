@@ -108,7 +108,6 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 7257052086973704801}
   - {fileID: -6209011014203803788}
-  - {fileID: 3315638811393850415}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -152,23 +151,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-8574433181099672032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7318eef8ff4a3e4d9454e97f7fe0e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnToClosestEnemy: 0
-  angleRange: 0
-  distance: 0
-  setAttacking: 0
-  attackingValue: 0
 --- !u!114 &-8209972368344425490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,7 +266,6 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 2292050457914121315}
   - {fileID: -4901382048210244981}
-  - {fileID: 2088881108515833977}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -428,9 +409,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7907939137233032060}
-  m_StateMachineBehaviours:
-  - {fileID: -4152784791177208686}
-  - {fileID: 4701189526049108756}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -461,8 +440,8 @@ MonoBehaviour:
   turnToClosestEnemy: 1
   angleRange: 180
   distance: 1.5
-  setAttacking: 0
-  attackingValue: 0
+  setAttacking: 1
+  attackingValue: 1
 --- !u!1101 &-6177381845015384525
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -641,8 +620,8 @@ MonoBehaviour:
   turnToClosestEnemy: 1
   angleRange: 180
   distance: 2
-  setAttacking: 0
-  attackingValue: 0
+  setAttacking: 1
+  attackingValue: 1
 --- !u!206 &-4844729588587563109
 BlendTree:
   m_ObjectHideFlags: 1
@@ -755,23 +734,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-4152784791177208686
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7318eef8ff4a3e4d9454e97f7fe0e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnToClosestEnemy: 0
-  angleRange: 0
-  distance: 0
-  setAttacking: 0
-  attackingValue: 0
 --- !u!1102 &-3871721194478984664
 AnimatorState:
   serializedVersion: 5
@@ -780,12 +742,11 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DodgeDir
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -318450458790089255}
-  m_StateMachineBehaviours:
-  - {fileID: -8574433181099672032}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1312,139 +1273,139 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: X
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: dodgeZ
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: dodgeX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isMoving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LightHit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: HeavyHit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Act
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: inBlock
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isDamageHead
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isDead
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: inRunMode
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isHitFront
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsDead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: xShort
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: xInstant
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isKickedToChest
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isKnockOut
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: DodgeForward
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: DodgeDir
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: yShort
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: yInstant
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Movement Layer
@@ -1590,7 +1551,7 @@ BlendTree:
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: -1}
-    m_TimeScale: 1.5
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Z
     m_Mirror: 0
@@ -1599,7 +1560,7 @@ BlendTree:
       type: 3}
     m_Threshold: 0.33333334
     m_Position: {x: 0, y: 1}
-    m_TimeScale: 1.5
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Z
     m_Mirror: 0
@@ -1608,7 +1569,7 @@ BlendTree:
       type: 3}
     m_Threshold: 0.6666667
     m_Position: {x: -1, y: 0}
-    m_TimeScale: 1.5
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Z
     m_Mirror: 0
@@ -1617,7 +1578,7 @@ BlendTree:
       type: 3}
     m_Threshold: 1
     m_Position: {x: 1, y: 0}
-    m_TimeScale: 1.5
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Z
     m_Mirror: 0
@@ -1628,23 +1589,6 @@ BlendTree:
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 1
---- !u!114 &2088881108515833977
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7318eef8ff4a3e4d9454e97f7fe0e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnToClosestEnemy: 0
-  angleRange: 0
-  distance: 0
-  setAttacking: 1
-  attackingValue: 1
 --- !u!1101 &2167313291446857531
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1686,7 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorBoolsToSet:
-  - name: isAttack
+  - name: isAttacking
     value: 0
   animatorTriggersToSet:
   - name: LightHit
@@ -1796,23 +1740,6 @@ MonoBehaviour:
   setCharacterStatus: 0
   statusToSet: 1
   restartBehavior: 0
---- !u!114 &3315638811393850415
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7318eef8ff4a3e4d9454e97f7fe0e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnToClosestEnemy: 0
-  angleRange: 0
-  distance: 0
-  setAttacking: 1
-  attackingValue: 1
 --- !u!1102 &3350697973760997736
 AnimatorState:
   serializedVersion: 5
@@ -1857,8 +1784,8 @@ MonoBehaviour:
   turnToClosestEnemy: 1
   angleRange: 180
   distance: 1.5
-  setAttacking: 0
-  attackingValue: 0
+  setAttacking: 1
+  attackingValue: 1
 --- !u!206 &4052342234461035459
 BlendTree:
   m_ObjectHideFlags: 1
@@ -1993,23 +1920,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &4701189526049108756
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7318eef8ff4a3e4d9454e97f7fe0e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnToClosestEnemy: 0
-  angleRange: 0
-  distance: 0
-  setAttacking: 0
-  attackingValue: 0
 --- !u!114 &4830093343434219299
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2416,23 +2326,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &8262635166612566787
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7318eef8ff4a3e4d9454e97f7fe0e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnToClosestEnemy: 0
-  angleRange: 0
-  distance: 0
-  setAttacking: 1
-  attackingValue: 1
 --- !u!1102 &8534891979664923319
 AnimatorState:
   serializedVersion: 5
@@ -2450,7 +2343,6 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 3275738783174829432}
   - {fileID: 3362921881250225672}
-  - {fileID: 8262635166612566787}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

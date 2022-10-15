@@ -7,7 +7,7 @@ public class RootMotionNavMeshMovement : MonoBehaviour
 {
     public NavMeshAgent navAgent;
     public Animator anim;
-    public Character character;
+    public Unit character;
     public bool drawPath = true;
     private const float DrawPathTreshhold = 0.1f;
     //private NavMeshPath path;
@@ -16,7 +16,7 @@ public class RootMotionNavMeshMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        character = GetComponent<Character>();
+        character = GetComponent<Unit>();
         navAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         navAgent.updatePosition = false;
