@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 public class GameplaySpeedManager : MonoSingleton<GameplaySpeedManager>
 {
     public float timeScale = 0.3f;
-    public bool useTimeScale;
-    public Gamepad gamepad;
+    //public bool useTimeScale;
 
     public void SetGameplaySpeed() => Time.timeScale = timeScale;
     public void ResetGameplaySpeed() => Time.timeScale = 1;

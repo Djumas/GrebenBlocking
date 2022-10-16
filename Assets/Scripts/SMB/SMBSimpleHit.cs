@@ -9,15 +9,19 @@ public class SMBSimpleHit : StateMachineBehaviour
     private bool attackActive = false;
     private bool attackStarted = false;
     private bool attackStopped = false;
+    public bool damagePlayerOnly = false;
+    private UnitAttackModifier attackModifier;
     public SimpleHitData hit;
-
     
-
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Debug.Log("Attacking status:" + animator.GetBool("isAttacking"));
+        attackModifier = animator.gameObject.GetComponent<UnitAttackModifier>();
+        if (attackModifier != null)
+        {
+            damagePlayerOnly = attackModifier.damagePlayerOnly;
+        }
         attackStarted = false;
         attackActive = false;
         animator.SetBool("isAttacking", true);
@@ -50,11 +54,13 @@ public class SMBSimpleHit : StateMachineBehaviour
             //Debug.Log(enemiesInRange);
             if (enemiesInRange != null)
             {
-                attackActive = false;
                 foreach (Unit enemy in enemiesInRange)
                 {
-                    HealthManager enemyHealth = enemy.gameObject.GetComponent<HealthManager>();
-                    enemyHealth.TakeDamage(hit.damage, hit.damageEffects, animator.gameObject);
+                    if (!damagePlayerOnly||(enemy.unitType == UnitType.Player)) {
+                        attackActive = false;
+                        HealthManager enemyHealth = enemy.gameObject.GetComponent<HealthManager>();
+                        enemyHealth.TakeDamage(hit.damage, hit.damageEffects, animator.gameObject);
+                    }
                 }
             }
         }
