@@ -24,7 +24,7 @@ public class UnitSpawnManager : MonoSingleton<UnitSpawnManager>
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         unitSpawnPoints = FindObjectsOfType<UnitSpawnPoint>();
         foreach (UnitSpawnPoint spawnPoint in unitSpawnPoints) {
