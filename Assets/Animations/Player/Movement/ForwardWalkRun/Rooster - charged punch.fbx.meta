@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0282123b5d2a9b7408372acadae1516e
+guid: 1a2d8d0d39c157840a0af22afed88ff3
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: RoosterHeavyKick
+    second: Rooster - charged punch
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: RoosterHeavyKick
+      name: Rooster - charged punch
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

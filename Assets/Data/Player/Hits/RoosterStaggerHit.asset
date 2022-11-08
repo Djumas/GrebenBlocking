@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d5d4bf259f37b043a053427fc45e9d5, type: 3}
-  m_Name: RoosterQuickLeftPunch
+  m_Name: RoosterStaggerHit
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 50
   range: 1.5
-  damageEffects: 05000000
-  normalisedStartTime: 35
-  normalisedStopTime: 45
+  damageEffects: 02000000
+  normalisedStartTime: 30
+  normalisedStopTime: 50
   angleCenter: 0
-  angleRange: 180
+  angleRange: 90
   ID: 0

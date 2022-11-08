@@ -4,7 +4,11 @@ using UnityEngine;
 
 public enum DamageEffectTypes {
     GroinHit,
-    ChestKick
+    ChestKick,
+    StaggerHit, 
+    HeadHit,
+    RightHit,
+    LeftHit
 }
 
 public class HealthManager : MonoBehaviour
@@ -58,6 +62,34 @@ public class HealthManager : MonoBehaviour
             TurnToTarget(origin);
             Debug.Log(gameObject+" KickedToChest");
             anim.SetTrigger("isKickedToChest");
+            return;
+        }
+        if (damageEffects.Contains(DamageEffectTypes.StaggerHit))
+        {
+            TurnToTarget(origin);
+            Debug.Log(gameObject + " StaggerHit");
+            anim.SetTrigger("StaggerHitFront");
+            return;
+        }
+        if (damageEffects.Contains(DamageEffectTypes.RightHit))
+        {
+            TurnToTarget(origin);
+            Debug.Log(gameObject + " RightHit");
+            anim.SetTrigger("HitRight");
+            return;
+        }
+        if (damageEffects.Contains(DamageEffectTypes.LeftHit))
+        {
+            TurnToTarget(origin);
+            Debug.Log(gameObject + " LeftHit");
+            anim.SetTrigger("HitLeft");
+            return;
+        }
+        if (damageEffects.Contains(DamageEffectTypes.HeadHit))
+        {
+            TurnToTarget(origin);
+            Debug.Log(gameObject + " HeadHit");
+            anim.SetTrigger("HitHead");
             return;
         }
 

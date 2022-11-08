@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0282123b5d2a9b7408372acadae1516e
+guid: 6fe290939b63843408ef184357ac6252
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: RoosterHeavyKick
+    second: Fool - heavy hit front + get up
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: RoosterHeavyKick
+      name: Fool - heavy hit front + get up
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 65
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -118,7 +118,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9a3877227e45bce4b8250d9f80ec6d98,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1740d1f47def06149a2896c42deaf1b9,
     type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2

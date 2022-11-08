@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   range: 1.5
-  damageEffects: 
+  damageEffects: 04000000
   normalisedStartTime: 35
   normalisedStopTime: 45
   angleCenter: 0
