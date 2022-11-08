@@ -15,8 +15,8 @@ MonoBehaviour:
   damage: 100
   range: 2
   damageEffects: 03000000
-  normalisedStartTime: 35
-  normalisedStopTime: 45
+  normalisedStartTime: 30
+  normalisedStopTime: 50
   angleCenter: 0
   angleRange: 90
   ID: 0

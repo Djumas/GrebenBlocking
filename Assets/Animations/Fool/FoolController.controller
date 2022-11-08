@@ -69,6 +69,12 @@ MonoBehaviour:
   behaviorStateToSet: KnockOut
   animatorBoolToSet: isKnockOut
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -78,6 +84,10 @@ MonoBehaviour:
   setCharacterStatus: 1
   statusToSet: 2
   restartBehavior: 1
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!114 &-8981214983168329534
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -254,6 +264,28 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &-8102855755727147658
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 1
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &-7964932003265767000
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -268,17 +300,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviorTree: {fileID: 0}
   behaviorStateToSet: GotHit
-  animatorBoolToSet: 
+  animatorBoolToSet: isKnockOut
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: isKnockOut
+  animatorBoolToSetOnTimeValue: 0
+  timeAmountToSetBool: 1
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
   behaviorTimeToSet: 
   timeAmount: 0
   delayAmount: 0
-  setCharacterStatus: 0
-  statusToSet: 0
+  setCharacterStatus: 1
+  statusToSet: 2
   restartBehavior: 1
+  disableBehavior: 0
+  enableBehavior: 1
+  timeAmountToEnable: 1
+  EnableTimeLeft: 0
 --- !u!1102 &-7943496559059137745
 AnimatorState:
   serializedVersion: 5
@@ -449,7 +491,8 @@ AnimatorState:
   - {fileID: 6019735991224087787}
   - {fileID: -112679057328043610}
   - {fileID: -7440665874558985619}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 5744654048103557345}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -542,6 +585,41 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-6942911367067930810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd92f52690c92449e92f64be2fec29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorTree: {fileID: 0}
+  behaviorStateToSet: 
+  animatorBoolToSet: 
+  animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
+  behaviorBoolToSet: 
+  behaviorBoolToSetValue: 1
+  animatorTriggerToSet: 
+  behaviorTimeToSet: 
+  timeAmount: 0
+  delayAmount: 0
+  setCharacterStatus: 1
+  statusToSet: 0
+  restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1101 &-6462451755945162219
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -637,17 +715,20 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isKnockOut
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.1
+  m_TransitionDuration: 0.5
   m_TransitionOffset: 0
   m_ExitTime: 0.9
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -712,6 +793,12 @@ MonoBehaviour:
   behaviorStateToSet: KnockOut
   animatorBoolToSet: isKnockOut
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -721,6 +808,10 @@ MonoBehaviour:
   setCharacterStatus: 1
   statusToSet: 2
   restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1101 &-6093681731157046598
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -759,6 +850,12 @@ MonoBehaviour:
   behaviorStateToSet: Dead
   animatorBoolToSet: 
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: isDead
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -768,6 +865,10 @@ MonoBehaviour:
   setCharacterStatus: 1
   statusToSet: 1
   restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1102 &-5733294008934295068
 AnimatorState:
   serializedVersion: 5
@@ -913,6 +1014,61 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-4830962298587266791
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fool - ChargedHit
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: -2585736038639170901}
+  - {fileID: 7264325145725663461}
+  m_StateMachineBehaviours:
+  - {fileID: -1324129980646041995}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 1827226128182048838, guid: 1ea4bb749791d86419ab3b0591c734c2,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1101 &-4295754602662157914
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isKnockOut
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 7481398758989470238}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.625
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &-4246718295700837702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -939,6 +1095,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6396450845644526380}
+  - {fileID: -4295754602662157914}
   m_StateMachineBehaviours:
   - {fileID: 2426308904854358064}
   - {fileID: -7964932003265767000}
@@ -1108,14 +1265,36 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1458746269807347023}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.05
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
-  m_HasFixedDuration: 1
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-2585736038639170901
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 1
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.1
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9
+  m_HasExitTime: 1
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -1194,7 +1373,7 @@ AnimatorStateMachine:
     m_Position: {x: 730, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8152028796381448843}
-    m_Position: {x: 950, y: 90, z: 0}
+    m_Position: {x: 960, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5703854461057824354}
     m_Position: {x: 260, y: 90, z: 0}
@@ -1218,7 +1397,7 @@ AnimatorStateMachine:
     m_Position: {x: 850, y: -380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7823289865729072165}
-    m_Position: {x: 270, y: -120, z: 0}
+    m_Position: {x: 260, y: -130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1458746269807347023}
     m_Position: {x: 850, y: -440, z: 0}
@@ -1231,6 +1410,12 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -3927735322464086138}
     m_Position: {x: 850, y: -620, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4830962298587266791}
+    m_Position: {x: 850, y: -680, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7481398758989470238}
+    m_Position: {x: 1090, y: -620, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 6483471099000624851}
@@ -1242,6 +1427,7 @@ AnimatorStateMachine:
   - {fileID: -1043883936908365010}
   - {fileID: 1546086862928024941}
   - {fileID: -6986336306340172055}
+  - {fileID: -1160771519701306589}
   m_EntryTransitions:
   - {fileID: 3977081599568438270}
   m_StateMachineTransitions: {}
@@ -1351,6 +1537,66 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.1
   m_TransitionOffset: 0
   m_ExitTime: 0.9
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!114 &-1324129980646041995
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd92f52690c92449e92f64be2fec29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorTree: {fileID: 0}
+  behaviorStateToSet: 
+  animatorBoolToSet: isKnockOut
+  animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: isKnockOut
+  animatorBoolToSetOnTimeValue: 0
+  timeAmountToSetBool: 4
+  BoolSetTimeLeft: 0
+  behaviorBoolToSet: 
+  behaviorBoolToSetValue: 0
+  animatorTriggerToSet: 
+  behaviorTimeToSet: 
+  timeAmount: 0
+  delayAmount: 0
+  setCharacterStatus: 1
+  statusToSet: 2
+  restartBehavior: 0
+  disableBehavior: 1
+  enableBehavior: 1
+  timeAmountToEnable: 4
+  EnableTimeLeft: 0
+--- !u!1101 &-1160771519701306589
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: StaggerHitFront
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -4830962298587266791}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -1525,6 +1771,41 @@ MonoBehaviour:
     value: 0
   animatorExitBoolsToSet: []
   animatorExitTriggersToSet: []
+--- !u!114 &-372957592051510525
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd92f52690c92449e92f64be2fec29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorTree: {fileID: 0}
+  behaviorStateToSet: 
+  animatorBoolToSet: 
+  animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
+  behaviorBoolToSet: 
+  behaviorBoolToSetValue: 1
+  animatorTriggerToSet: 
+  behaviorTimeToSet: 
+  timeAmount: 0
+  delayAmount: 0
+  setCharacterStatus: 1
+  statusToSet: 0
+  restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1101 &-235992513342239899
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1911,6 +2192,28 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1252917632961552949
+AnimatorStateTransition:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &1458746269807347023
 AnimatorState:
   serializedVersion: 5
@@ -1987,6 +2290,78 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.1
   m_TransitionOffset: 0
   m_ExitTime: 0.87288135
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1651827377432390465
+AnimatorStateTransition:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isKnockOut
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -8152028796381448843}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1668637943255622390
+AnimatorStateTransition:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 0.95
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1704605372860331563
+AnimatorStateTransition:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isKnockOut
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -2110,6 +2485,12 @@ MonoBehaviour:
   behaviorStateToSet: 
   animatorBoolToSet: 
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: DropKick
@@ -2119,6 +2500,10 @@ MonoBehaviour:
   setCharacterStatus: 0
   statusToSet: 0
   restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!114 &2426308904854358064
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2278,6 +2663,12 @@ MonoBehaviour:
   behaviorStateToSet: GotHit
   animatorBoolToSet: 
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -2287,6 +2678,10 @@ MonoBehaviour:
   setCharacterStatus: 0
   statusToSet: 0
   restartBehavior: 1
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!206 &3536421432499118821
 BlendTree:
   m_ObjectHideFlags: 1
@@ -2402,7 +2797,8 @@ AnimatorState:
   - {fileID: 5483105047411349401}
   - {fileID: -2944047689758981983}
   - {fileID: -7332327957604992588}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -372957592051510525}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2434,6 +2830,12 @@ MonoBehaviour:
   behaviorStateToSet: GotHit
   animatorBoolToSet: 
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -2443,6 +2845,10 @@ MonoBehaviour:
   setCharacterStatus: 0
   statusToSet: 0
   restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1109 &3788371639965318241
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -2568,6 +2974,12 @@ MonoBehaviour:
   behaviorStateToSet: GotHit
   animatorBoolToSet: 
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -2577,6 +2989,10 @@ MonoBehaviour:
   setCharacterStatus: 0
   statusToSet: 0
   restartBehavior: 1
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1101 &4640865803892758590
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2640,6 +3056,12 @@ MonoBehaviour:
   behaviorStateToSet: GotHit
   animatorBoolToSet: 
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -2649,6 +3071,10 @@ MonoBehaviour:
   setCharacterStatus: 0
   statusToSet: 0
   restartBehavior: 1
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1101 &5214236282577992950
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2795,7 +3221,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!114 &5837181827628458444
+--- !u!114 &5744654048103557345
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2811,6 +3237,12 @@ MonoBehaviour:
   behaviorStateToSet: 
   animatorBoolToSet: 
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: 
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: 
@@ -2820,6 +3252,45 @@ MonoBehaviour:
   setCharacterStatus: 1
   statusToSet: 0
   restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
+--- !u!114 &5837181827628458444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdd92f52690c92449e92f64be2fec29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorTree: {fileID: 0}
+  behaviorStateToSet: 
+  animatorBoolToSet: 
+  animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
+  behaviorBoolToSet: 
+  behaviorBoolToSetValue: 1
+  animatorTriggerToSet: 
+  behaviorTimeToSet: 
+  timeAmount: 0
+  delayAmount: 0
+  setCharacterStatus: 1
+  statusToSet: 0
+  restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1101 &5933637644337948814
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3011,6 +3482,60 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &7264325145725663461
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isKnockOut
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 0}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 1
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.875
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1102 &7481398758989470238
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Get Up
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: -8102855755727147658}
+  m_StateMachineBehaviours:
+  - {fileID: -6942911367067930810}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -998496362607748373, guid: 6fe290939b63843408ef184357ac6252,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &7661485403564966278
 AnimatorStateTransition:
   m_ObjectHideFlags: 3

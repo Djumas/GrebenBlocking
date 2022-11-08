@@ -51,7 +51,7 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8534891979664923319}
-    m_Position: {x: 260, y: -270, z: 0}
+    m_Position: {x: 260, y: -290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -542097782253738496}
     m_Position: {x: 260, y: -420, z: 0}
@@ -87,6 +87,8 @@ AnimatorStateMachine:
   - {fileID: 3127260666165719973}
   - {fileID: -6622967251918101416}
   - {fileID: 429764455546370655}
+  - {fileID: 8853137517928880059}
+  - {fileID: 8694301045816182506}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -636,7 +638,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ChargedPunch
-  m_Speed: 1.2
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5789018993049063311}
@@ -1152,6 +1154,12 @@ MonoBehaviour:
   behaviorStateToSet: None
   animatorBoolToSet: isKnockOut
   animatorBoolToSetValue: 0
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: None
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: None
@@ -1161,6 +1169,10 @@ MonoBehaviour:
   setCharacterStatus: 1
   statusToSet: 0
   restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!206 &-891199859578160842
 BlendTree:
   m_ObjectHideFlags: 1
@@ -1607,7 +1619,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.05
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
@@ -1765,11 +1777,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.05
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
-  m_HasFixedDuration: 1
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -1889,6 +1901,12 @@ MonoBehaviour:
   behaviorStateToSet: None
   animatorBoolToSet: None
   animatorBoolToSetValue: 1
+  animatorBoolToSetOnExit: 
+  animatorBoolToSetOnExitValue: 1
+  animatorBoolToSetOnTime: 
+  animatorBoolToSetOnTimeValue: 1
+  timeAmountToSetBool: 0
+  BoolSetTimeLeft: 0
   behaviorBoolToSet: None
   behaviorBoolToSetValue: 1
   animatorTriggerToSet: None
@@ -1898,6 +1916,10 @@ MonoBehaviour:
   setCharacterStatus: 0
   statusToSet: 1
   restartBehavior: 0
+  disableBehavior: 0
+  enableBehavior: 0
+  timeAmountToEnable: 0
+  EnableTimeLeft: 0
 --- !u!1102 &3350697973760997736
 AnimatorState:
   serializedVersion: 5
@@ -2156,6 +2178,28 @@ AnimatorStateTransition:
   m_ExitTime: 0.5
   m_HasExitTime: 1
   m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &5880679960763326535
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -5339993225532198311}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -2540,6 +2584,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &8694301045816182506
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: yShort
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 545898066674007291}
+  m_Solo: 0
+  m_Mute: 1
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!206 &8697380306127619379
 BlendTree:
   m_ObjectHideFlags: 1
@@ -2642,3 +2711,28 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 2
+--- !u!1101 &8853137517928880059
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: yInstant
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -5339993225532198311}
+  m_Solo: 0
+  m_Mute: 1
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.05
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1

@@ -13554,11 +13554,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866944216}
+  - component: {fileID: 1866944221}
   - component: {fileID: 1866944217}
   - component: {fileID: 1866944218}
   - component: {fileID: 1866944220}
   - component: {fileID: 1866944219}
-  - component: {fileID: 1866944221}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -31414,11 +31414,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fool
       objectReference: {fileID: 0}
-    - target: {fileID: 8112890343299889974, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8925314655751397772, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31473,11 +31468,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8959822507295060477, guid: 0f03f27350f44e4458d7294ce9f1bd9c,
-        type: 3}
-      propertyPath: isImmortal
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f03f27350f44e4458d7294ce9f1bd9c, type: 3}
