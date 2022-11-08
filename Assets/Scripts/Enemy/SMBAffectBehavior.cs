@@ -9,6 +9,15 @@ public class SMBAffectBehavior : StateMachineBehaviour
     public string behaviorStateToSet = "";
     public string animatorBoolToSet = "";
     public bool animatorBoolToSetValue = true;
+
+    public string animatorBoolToSetOnExit = "";
+    public bool animatorBoolToSetOnExitValue = true;
+
+    public string animatorBoolToSetOnTime = "";
+    public bool animatorBoolToSetOnTimeValue = true;
+    public float timeAmountToSetBool = 0;
+    public float BoolSetTimeLeft = 0;
+
     public string behaviorBoolToSet = "";
     public bool behaviorBoolToSetValue = true;
     public string animatorTriggerToSet = "";
@@ -19,6 +28,10 @@ public class SMBAffectBehavior : StateMachineBehaviour
     public UnitStatus statusToSet = UnitStatus.Alive;
     public bool restartBehavior = false;
     private Unit character;
+    public bool disableBehavior = false;
+    public bool enableBehavior = false;
+    public float timeAmountToEnable = 0;
+    public float EnableTimeLeft = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -63,21 +76,56 @@ public class SMBAffectBehavior : StateMachineBehaviour
             behaviorTree.enabled = false;
             behaviorTree.enabled = true;
         }
-        
 
+        if (disableBehavior) {
+            behaviorTree.enabled = false;
+        }
+
+        if (enableBehavior) {
+            EnableTimeLeft = timeAmountToEnable;
+        }
+
+        if (animatorBoolToSetOnTime != "")
+        {
+            BoolSetTimeLeft = timeAmountToSetBool;
+        }
     }
 
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (enableBehavior && !behaviorTree.enabled) {
+            if (EnableTimeLeft > 0)
+            {
+                EnableTimeLeft -= Time.deltaTime;
+            }
+            else {
+                behaviorTree.enabled = true;
+            }
+        }
+
+        if ((animatorBoolToSetOnTime != "") && (animator.GetBool(animatorBoolToSetOnTime) != animatorBoolToSetOnTimeValue))
+        {
+            if (BoolSetTimeLeft > 0)
+            {
+                BoolSetTimeLeft -= Time.deltaTime;
+            }
+            else
+            {
+                animator.SetBool(animatorBoolToSetOnTime, animatorBoolToSetOnTimeValue);
+            }
+        }
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (animatorBoolToSetOnExit != "")
+        {
+            animator.SetBool(animatorBoolToSetOnExit, animatorBoolToSetOnExitValue);
+        }
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
