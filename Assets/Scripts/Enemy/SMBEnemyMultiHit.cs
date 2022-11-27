@@ -16,32 +16,36 @@ public struct Hit
 }
 
 
-public class SMBEnemyMultiHit : StateMachineBehaviour
+public class SMBEnemyMultiHit : StateMachineBehaviour // Currently deprecated
 {
     //public Hit[] hitList;
-    public Hit[] hits;
+    public SimpleHitData[] hits;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+
+    /*
+override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+{
+    AttackPoint[] attackPoints = animator.gameObject.GetComponentsInChildren<AttackPoint>();
+    for (int i = 0; i < hits.Length; i++)
     {
-        AttackPoint[] attackPoints = animator.gameObject.GetComponentsInChildren<AttackPoint>();
-        for (int i = 0; i < hits.Length; i++)
+        hits[i].ID = Random.Range(0, 10000);
+        foreach (AttackPoint attackPoint in attackPoints)
         {
-            hits[i].ID = Random.Range(0, 10000);
-            foreach (AttackPoint attackPoint in attackPoints)
+            if (attackPoint.ID == hits[i].attackPointID)
             {
-                if (attackPoint.ID == hits[i].attackPointID)
-                {
-                    hits[i].attackPoint = attackPoint;
-                    //Debug.Log(hits[i].attackPointID+" found");
-                    break;
-                }
-                Debug.Log(hits[i].attackPointID + " not found");
+                hits[i].attackPoint = attackPoint;
+                //Debug.Log(hits[i].attackPointID+" found");
+                break;
             }
-            
+            Debug.Log(hits[i].attackPointID + " not found");
         }
+
     }
+}*/
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+
+        /*
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         float currentTime = stateInfo.normalizedTime*100;
@@ -56,7 +60,7 @@ public class SMBEnemyMultiHit : StateMachineBehaviour
                 hits[i].attackPoint.active = false;
             }
         }
-    }
+    }*/
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

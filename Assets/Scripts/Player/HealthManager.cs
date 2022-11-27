@@ -16,9 +16,17 @@ public class HealthManager : MonoBehaviour
     public float baseHealth;
     public float currentHealth;
     public bool isImmortal = false;
+    public bool isKnockOutAble = true;
     public bool isDead = false;
     private Animator anim;
     private Unit unit;
+
+    public float baseBalance;
+    public float currentBalance;
+    public float stunTresh;
+
+    public float balanceRestoreRate;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,41 +34,52 @@ public class HealthManager : MonoBehaviour
         anim = GetComponent<Animator>();
         unit = GetComponent<Unit>();
         currentHealth = baseHealth;
+        currentBalance = baseBalance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentBalance <= baseBalance)
+        {
+            currentBalance += Time.deltaTime * balanceRestoreRate;
+        }
+        else currentBalance = baseBalance;
     }
 
-    public void TakeDamage(float amount, List<DamageEffectTypes> damageEffects, GameObject origin)
+    public void TakeDamage(float healthAmount, float balanceAmount, List<DamageEffectTypes> damageEffects, GameObject origin)
     {
-        Debug.Log("DamageTaken by "+gameObject+" from"+origin);
-        
-        if (isDead){
+        Debug.Log("DamageTaken by " + gameObject + " from" + origin);
+
+        if (isDead) {
             return;
         }
 
-        if (unit.unitStatus == UnitStatus.KnockOut){
+        if (unit.unitStatus == UnitStatus.KnockOut) {
             return;
         }
 
         if (!isImmortal) {
-            currentHealth -= amount;
+            currentHealth -= healthAmount;
             DeathCheck();
+        }
+
+        if (isKnockOutAble)
+        {
+            currentBalance -= balanceAmount;
+            if (currentBalance <= 0) currentBalance = 0;
         }
 
         if (damageEffects.Contains(DamageEffectTypes.GroinHit))
         {
-         TurnToTarget(origin);
-         anim.SetTrigger("isHitToGroin");
-         return;
+            TurnToTarget(origin);
+            anim.SetTrigger("isHitToGroin");
+            return;
         }
         if (damageEffects.Contains(DamageEffectTypes.ChestKick))
         {
             TurnToTarget(origin);
-            Debug.Log(gameObject+" KickedToChest");
+            Debug.Log(gameObject + " KickedToChest");
             anim.SetTrigger("isKickedToChest");
             return;
         }
@@ -97,7 +116,7 @@ public class HealthManager : MonoBehaviour
     }
 
     public void TakeDamage(float amount) {
-        TakeDamage(amount, new List<DamageEffectTypes>(),null);
+        TakeDamage(amount, 0, new List<DamageEffectTypes>(), null);
     }
 
 
@@ -126,8 +145,9 @@ public class HealthManager : MonoBehaviour
         anim.SetBool("IsDead", true);
         isDead = true;
         gameObject.GetComponent<Unit>().unitStatus = UnitStatus.Dead;
-//        rigiBody.detectCollisions = false;
-//        rigiBody.isKinematic = true;
+        //        rigiBody.detectCollisions = false;
+        //        rigiBody.isKinematic = true;
 
     }
+
 }

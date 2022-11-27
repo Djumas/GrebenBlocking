@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoosterQuickLeftPunch
   m_EditorClassIdentifier: 
   damage: 30
+  balance: 1
   range: 1.5
   damageEffects: 05000000
   normalisedStartTime: 35

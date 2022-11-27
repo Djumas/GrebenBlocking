@@ -7,6 +7,7 @@ using UnityEngine;
 public class SimpleHitData : ScriptableObject
 {
     public float damage;
+    public float balance;
     public float range;
     public List<DamageEffectTypes> damageEffects;
     [Range(0,100)]

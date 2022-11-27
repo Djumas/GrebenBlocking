@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackPoint : MonoBehaviour
 {
-    public Hit currenthit;
+    public SimpleHitData currenthit;
     public bool active = false;
     public string ID;
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class AttackPoint : MonoBehaviour
             //Debug.Log(ID + " Collided " + other);
             enemyHealth = other.GetComponent<HealthManager>();
             if (enemyHealth != null && !enemyHealth.isDead) {
-                enemyHealth.TakeDamage(currenthit.Damage,currenthit.damageEffects, gameObject);
+                enemyHealth.TakeDamage(currenthit.damage,currenthit.balance,currenthit.damageEffects, gameObject);
                 active = false;
             }
         }

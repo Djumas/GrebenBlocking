@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoosterRightPunch
   m_EditorClassIdentifier: 
   damage: 30
+  balance: 1
   range: 1.5
   damageEffects: 04000000
   normalisedStartTime: 35

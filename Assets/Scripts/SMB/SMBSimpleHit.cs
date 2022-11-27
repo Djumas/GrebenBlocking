@@ -59,7 +59,7 @@ public class SMBSimpleHit : StateMachineBehaviour
                     if (!damagePlayerOnly||(enemy.unitType == UnitType.Player)) {
                         attackActive = false;
                         HealthManager enemyHealth = enemy.gameObject.GetComponent<HealthManager>();
-                        enemyHealth.TakeDamage(hit.damage, hit.damageEffects, animator.gameObject);
+                        enemyHealth.TakeDamage(hit.damage,hit.balance, hit.damageEffects, animator.gameObject);
                     }
                 }
             }

@@ -254,8 +254,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3031753230993067675}
-  - component: {fileID: 3781373458808096136}
-  - component: {fileID: 3781373458808096139}
   m_Layer: 9
   m_Name: model:right_knee
   m_TagString: Untagged
@@ -278,43 +276,6 @@ Transform:
   m_Father: {fileID: 8515305672846670743}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3781373458808096136
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608923059385534275}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.13
-  m_Height: 0.6
-  m_Direction: 0
-  m_Center: {x: 0.12, y: 0, z: 0}
---- !u!114 &3781373458808096139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608923059385534275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 212047019160b3b48b4ce5f8cfda3c0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currenthit:
-    Damage: 0
-    Range: 0
-    damageEffects: 
-    attackPointID: 
-    attackPoint: {fileID: 0}
-    NormalisedStartTime: 0
-    NormalisedStopTime: 0
-    ID: 0
-  active: 0
-  ID: RightKnee
 --- !u!1 &1700136699897085375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,7 +1592,7 @@ MonoBehaviour:
   rotSpeed: 10
   clearShot: {fileID: 0}
   xShortActionTreshold: 10
-  yShortActionTreshold: 0.5
+  yShortActionTreshold: 0.3
   leftStickDirectedTresh: 0.6
   leftStickResetTresh: 0.1
   currentTargetCharacter: {fileID: 0}
@@ -1683,7 +1644,12 @@ MonoBehaviour:
   baseHealth: 1000
   currentHealth: 0
   isImmortal: 1
+  isKnockOutAble: 1
   isDead: 0
+  baseBalance: 0
+  currentBalance: 0
+  stunTresh: 0
+  balanceRestoreRate: 0
 --- !u!114 &3781373459292085064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1710,10 +1676,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.65
-  m_Radius: 0.32
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0.2}
 --- !u!114 &770312105
@@ -3400,7 +3366,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1403851936788851323}
-  - component: {fileID: 3781373459291260119}
   m_Layer: 9
   m_Name: model:right_ankle
   m_TagString: Untagged
@@ -3423,17 +3388,3 @@ Transform:
   m_Father: {fileID: 3031753230993067675}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3781373459291260119
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8720311805384523154}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.34
-  m_Height: 0.39
-  m_Direction: 0
-  m_Center: {x: 0.07, y: 0, z: 0}
