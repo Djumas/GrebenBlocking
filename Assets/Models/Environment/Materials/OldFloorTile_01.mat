@@ -102,7 +102,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Red_Layer_Tile_1: 1
-    - _Red_Normal_Intensity: 1
+    - _Red_Normal_Intensity: 1.77
     - _Red_Smoothness: 1
     m_Colors:
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
