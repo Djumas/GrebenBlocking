@@ -1279,6 +1279,11 @@ PrefabInstance:
       propertyPath: clearShot
       value: 
       objectReference: {fileID: 1113918450}
+    - target: {fileID: 3781373459292085071, guid: 3c8abbadbd4621841ba2ee148d55c221,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 83b645150710ad24dabcf48a844d2290, type: 2}
     - target: {fileID: 4087943488703855502, guid: 3c8abbadbd4621841ba2ee148d55c221,
         type: 3}
       propertyPath: m_Name
