@@ -1,0 +1,21 @@
+﻿public enum InputResult {
+    Kick,
+    HeavyKick,
+    Punch,
+    HeavyPunch,
+    Uppercut,
+    LegKnockOver,
+    Headbutt,
+    BackFist,
+    HummerLeg,
+    LowKick,
+    FrontKick,
+    BackKick,
+    Grab,
+    Choke,
+    ThrowBack,
+    ThrowFront,
+    BeatUp,
+    Stomp,
+    None       
+}
